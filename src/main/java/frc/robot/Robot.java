@@ -13,11 +13,12 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
 import frc.robot.subsystems.ToggleTwoSpeedSubsystem;
-
+import frc.robot.subsystems.ColorSensorSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   public static ToggleDriveModeSubsystem toggleDriveMode = new ToggleDriveModeSubsystem();
   public static ToggleTwoSpeedSubsystem toggleTwoSpeed = new ToggleTwoSpeedSubsystem();
+  public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
