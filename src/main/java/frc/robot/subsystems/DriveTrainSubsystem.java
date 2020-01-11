@@ -27,11 +27,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
   private TalonSRX rightMotor;
   private CANSparkMax leftMotor2;
   private CANSparkMax rightMotor2;
+  private CANSparkMax leftMotor1;
+  private CANSparkMax rightMotor1;
   public DriveTrainSubsystem(){
       leftMotor =  new TalonSRX(RobotMap.leftMotorID);
       rightMotor =  new TalonSRX(RobotMap.rightMotorID);
-      leftMotor2 = new CANSparkMax(RobotMap.leftSparkMaxID, MotorType.kBrushless);
-      rightMotor2 = new CANSparkMax(RobotMap.rightSparkMaxID, MotorType.kBrushless);
+      leftMotor1 = new CANSparkMax(RobotMap.leftSparkMaxID1, MotorType.kBrushless);
+      rightMotor1 = new CANSparkMax(RobotMap.rightSparkMaxID1, MotorType.kBrushless);
+      leftMotor2 = new CANSparkMax(RobotMap.leftSparkMaxID2, MotorType.kBrushless);
+      rightMotor2 = new CANSparkMax(RobotMap.rightSparkMaxID2, MotorType.kBrushless);
   }
   /*
   //@Override
@@ -64,7 +68,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
         	leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
         	rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
       }
-      
+      /*
       if(Robot.twoSpeed == Robot.TwoSpeed.SecondDrive)
     	{
         
@@ -72,12 +76,20 @@ public class DriveTrainSubsystem extends SubsystemBase {
     	else
     	{
         
+      }*/
+      if(Math.abs(leftSpeed) <= RobotMap.deadband){
+        leftSpeed = 0;
+      }
+      if(Math.abs(rightSpeed) <= RobotMap.deadband){
+        rightSpeed = 0;
       }
       //leftMotor.setInverted(true);
       leftMotor.set(ControlMode.PercentOutput, leftSpeed);
       rightMotor.set(ControlMode.PercentOutput, rightSpeed);    	
-    	//press right bumper for halfspeed
+      //press right bumper for halfspeed
+      leftMotor1.set(leftSpeed);
       leftMotor2.set(leftSpeed);
+      rightMotor1.set(rightSpeed);
       rightMotor2.set(rightSpeed);
       SmartDashboard.putNumber("Left speed", leftSpeed);
       SmartDashboard.putNumber("Right speed", rightSpeed);
