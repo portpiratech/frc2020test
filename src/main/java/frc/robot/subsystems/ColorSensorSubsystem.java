@@ -49,13 +49,6 @@ public class ColorSensorSubsystem extends SubsystemBase {
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
-  @Override
-  public Command getDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-    return new ColorSensorCommand();
-  }
-
   public void getColors(){
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
