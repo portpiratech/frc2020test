@@ -14,6 +14,8 @@ public class EncoderTestCommand extends CommandBase {
   /**
    * Creates a new EncoderTest.
    */
+  private boolean turning = false;
+  private boolean finished = false;
   public EncoderTestCommand() {
     addRequirements(Robot.encoderTestSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -27,7 +29,13 @@ public class EncoderTestCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.encoderTestSubsystem.move();
+    if(turning){
+      Robot.encoderTestSubsystem.move(0);
+    }else{
+      Robot.encoderTestSubsystem.move(0.9);
+    }
+    turning = !turning;
+    finished = true;
   }
 
   // Called once the command ends or is interrupted.
@@ -38,6 +46,6 @@ public class EncoderTestCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finished;
   }
 }

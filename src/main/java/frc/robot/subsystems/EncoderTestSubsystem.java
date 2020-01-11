@@ -22,8 +22,8 @@ public class EncoderTestSubsystem extends SubsystemBase {
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
   }
 
-  public void move(){
-    encoderMotor.set(ControlMode.PercentOutput, 0.9);
+  public void move(double speed){
+    encoderMotor.set(ControlMode.PercentOutput, speed);
   }
 
 }
