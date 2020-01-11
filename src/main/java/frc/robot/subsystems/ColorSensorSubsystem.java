@@ -7,9 +7,10 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.ColorSensorCommand;
@@ -20,7 +21,7 @@ import com.revrobotics.ColorMatch;
 /**
  * Add your docs here.
  */
-public class ColorSensorSubsystem extends Subsystem {
+public class ColorSensorSubsystem extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -49,10 +50,10 @@ public class ColorSensorSubsystem extends Subsystem {
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
   @Override
-  public void initDefaultCommand() {
+  public Command getDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new ColorSensorCommand());
+    return new ColorSensorCommand();
   }
 
   public void getColors(){
