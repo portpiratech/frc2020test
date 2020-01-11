@@ -7,38 +7,34 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class ToggleTwoSpeedCommand extends Command {
+public class ToggleTwoSpeedCommand extends CommandBase {
 	
 	
   public ToggleTwoSpeedCommand() {
       // Use requires() here to declare subsystem dependencies
-    requires(Robot.toggleTwoSpeed);
+      addRequirements(Robot.toggleTwoSpeed);
   }
 
   // Called just before this Command runs the first time
-  protected void initialize() {
+  public void initialize() {
     
   }
 
   // Called repeatedly when this Command is scheduled to run
-  protected void execute() {
+  public void execute() {
     Robot.toggleTwoSpeed.toggleTwoSpeed();
   }
 
   // Make this return true when this Command no longer needs to run execute()
-  protected boolean isFinished() {
+  public boolean isFinished() {
       return true;
   }
 
   // Called once after isFinished returns true
-  protected void end() {
+  public void end(boolean interrupted) {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  protected void interrupted() {
-  }
 }

@@ -2,25 +2,25 @@ package frc.robot.commands;
 import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 
-public class PistonExtend extends Command {
+public class PistonExtend extends CommandBase {
 	
 	boolean finished = false;
 	
     public PistonExtend() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.solenoid);
+        addRequirements(Robot.solenoid);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    public void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    public void execute() {
     	//Set cannons to launch mode, extend piston, wait, retract, stop cannons
     	
     	Robot.solenoid.extendLauncher();
@@ -30,21 +30,22 @@ public class PistonExtend extends Command {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return finished;
     }
 
     // Called once after isFinished returns true
-    protected void end() {
+    public void end(boolean interrupted) {
     	/*Robot.solenoid.retractLauncher();
     	
     	Timer.delay(1.0);
     	*/
     	Robot.solenoid.stopLauncher();
     }
-
+/*
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    */
 }

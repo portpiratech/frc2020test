@@ -1,18 +1,17 @@
 package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
-import frc.robot.commands.PistonStop;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 /**
  * The Piston subsystem incorporates two solenoids wired to the
  * pneumatics control module (PCM).
  */
-public class SolenoidSubsystem extends Subsystem {
+public class SolenoidSubsystem extends SubsystemBase {
 	
 	private DoubleSolenoid cannonSolenoid;
 	public double firingDelay = 0.5;
@@ -22,12 +21,12 @@ public class SolenoidSubsystem extends Subsystem {
 		cannonSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.solenoid2_port1, RobotMap.solenoid1_port2); //PCM ID 1, Solenoid ports 1,2
 	}
 
-
+/*
 	public void initDefaultCommand() {
 		//setDefaultCommand(new *);
 		setDefaultCommand(new PistonStop());
 	}
-
+*/
 	/**
 	 * The log method puts interesting information to the SmartDashboard.
 	 */
