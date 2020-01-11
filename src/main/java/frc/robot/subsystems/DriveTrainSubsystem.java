@@ -14,16 +14,15 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.DriveCommand;
 
 /**
  * Add your docs here.
  */
-public class DriveTrainSubsystem extends Subsystem {
+public class DriveTrainSubsystem extends SubsystemBase {
   private TalonSRX leftMotor;
   private TalonSRX rightMotor;
   private CANSparkMax leftMotor2;
@@ -34,14 +33,14 @@ public class DriveTrainSubsystem extends Subsystem {
       leftMotor2 = new CANSparkMax(RobotMap.leftSparkMaxID, MotorType.kBrushless);
       rightMotor2 = new CANSparkMax(RobotMap.rightSparkMaxID, MotorType.kBrushless);
   }
-
+  /*
   //@Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new DriveCommand());
   }
-
+*/
   public void drive(){  
       double leftSpeed, rightSpeed;
     	
