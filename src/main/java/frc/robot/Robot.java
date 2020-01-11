@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
-import frc.robot.subsystems.ToggleTwoSpeedSubsystem;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.ColorSensorSubsystem;
@@ -32,24 +31,18 @@ import frc.robot.subsystems.ColorSensorSubsystem;
  */
 public class Robot extends TimedRobot {
   public static DriveMode driveMode;
-  public static TwoSpeed twoSpeed;
 	
 	public static enum DriveMode {
 		TankDrive,
 		ArcadeDrive
   }
   
-  public static enum TwoSpeed {
-    FirstDrive,
-    SecondDrive
-  }
 
   public static OI m_oi;
 
   public static final SolenoidSubsystem solenoid = new SolenoidSubsystem();
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   public static ToggleDriveModeSubsystem toggleDriveMode = new ToggleDriveModeSubsystem();
-  public static ToggleTwoSpeedSubsystem toggleTwoSpeed = new ToggleTwoSpeedSubsystem();
   public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
 
   Command m_autonomousCommand;

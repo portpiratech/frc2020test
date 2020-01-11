@@ -9,10 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.PistonExtend;
-import frc.robot.commands.PistonRetract;
+import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
-import frc.robot.commands.ToggleTwoSpeedCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -81,9 +79,6 @@ public class OI {
     bButtonDriver = new JoystickButton(driverController, 2);
 
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
-    rightBumperDriver.whenPressed(new ToggleTwoSpeedCommand());
-
-    aButtonDriver.whenPressed(new PistonExtend());
-		bButtonDriver.whenPressed(new PistonRetract());
+    rightBumperDriver.whenPressed(new PistonCommand());
   }
 }
