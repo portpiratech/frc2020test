@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
 import frc.robot.subsystems.ToggleTwoSpeedSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
 
   public static OI m_oi;
 
+  public static final SolenoidSubsystem solenoid = new SolenoidSubsystem();
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   public static ToggleDriveModeSubsystem toggleDriveMode = new ToggleDriveModeSubsystem();
   public static ToggleTwoSpeedSubsystem toggleTwoSpeed = new ToggleTwoSpeedSubsystem();
