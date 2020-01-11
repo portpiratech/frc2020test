@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -79,6 +80,8 @@ public class DriveTrainSubsystem extends Subsystem {
     	//press right bumper for halfspeed
       leftMotor2.set(leftSpeed);
       rightMotor2.set(rightSpeed);
+      SmartDashboard.putNumber("Left speed", leftSpeed);
+      SmartDashboard.putNumber("Right speed", rightSpeed);
   }
 }
 
