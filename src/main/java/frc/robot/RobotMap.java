@@ -65,5 +65,8 @@ public class RobotMap {
   public static int solenoid1_port1 = 0; //DoubleSolenoid
 	public static int solenoid1_port2 = 1; //DoubleSolenoid
 	public static int solenoid2_port1 = 2; //DoubleSolenoid
-	public static int solenoid2_port2 = 3; //DoubleSolenoid
+  public static int solenoid2_port2 = 3; //DoubleSolenoid
+  
+
+  public static int encoderMotorID = 11;
 } 

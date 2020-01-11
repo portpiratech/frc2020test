@@ -68,15 +68,6 @@ public class DriveTrainSubsystem extends SubsystemBase {
         	leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
         	rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
       }
-      /*
-      if(Robot.twoSpeed == Robot.TwoSpeed.SecondDrive)
-    	{
-        
-    	}
-    	else
-    	{
-        
-      }*/
       if(Math.abs(leftSpeed) <= RobotMap.deadband){
         leftSpeed = 0;
       }
