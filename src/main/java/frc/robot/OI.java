@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.PistonExtend;
+import frc.robot.commands.PistonRetract;
 import frc.robot.commands.ToggleDriveModeCommand;
 import frc.robot.commands.ToggleTwoSpeedCommand;
 /**
@@ -56,6 +58,8 @@ public class OI {
 	public static JoystickButton startButtonOperator;
   public static JoystickButton leftBumperOperator;
   public static JoystickButton rightBumperOperator;
+  public static JoystickButton aButtonDriver;
+	public static JoystickButton bButtonDriver;
 	
 	public OI() {
 		driverController = new XboxController(RobotMap.driverControllerId);
@@ -73,8 +77,13 @@ public class OI {
     startButtonOperator = new JoystickButton(operatorController, 8);
     leftBumperOperator = new JoystickButton(operatorController, 5);
     rightBumperOperator = new JoystickButton(operatorController, 6);
+    aButtonDriver = new JoystickButton(driverController, 1);
+    bButtonDriver = new JoystickButton(driverController, 2);
 
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new ToggleTwoSpeedCommand());
+
+    aButtonDriver.whenPressed(new PistonExtend());
+		bButtonDriver.whenPressed(new PistonRetract());
   }
 }

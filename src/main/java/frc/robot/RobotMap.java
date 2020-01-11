@@ -57,4 +57,10 @@ public class RobotMap {
   public static double backLiftMotorMulti = 0.8;
   //Encoder
   public static int Encoder1ID = 197;
+
+  public static final int PCM_ID = 1; //Compressor/Pneumatics Control Module (used for DoubleSolenoids)
+  public static int solenoid1_port1 = 0; //DoubleSolenoid
+	public static int solenoid1_port2 = 1; //DoubleSolenoid
+	public static int solenoid2_port1 = 2; //DoubleSolenoid
+	public static int solenoid2_port2 = 3; //DoubleSolenoid
 } 
