@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
     cam = CameraServer.getInstance().startAutomaticCapture();
     cam.setResolution(240, 220);
     cam.setFPS(25);
-    CommandScheduler.getInstance().setDefaultCommand(colorSensorSubsystem, new ColorSensorCommand());
+    //CommandScheduler.getInstance().setDefaultCommand(colorSensorSubsystem, new ColorSensorCommand());
     CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new DriveCommand());
     
     //CameraServer.getInstance().startAutomaticCapture();
