@@ -97,6 +97,7 @@ public class ColorSensorSubsystem extends SubsystemBase {
       String color = getColors();
       if(color != lastColor){
         count++;
+        lastColor = color;
       }
       SmartDashboard.putNumber("count", count);
     }

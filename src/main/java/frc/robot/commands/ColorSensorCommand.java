@@ -20,18 +20,19 @@ public class ColorSensorCommand extends CommandBase {
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
+    Robot.colorSensorSubsystem.rotatePanel();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    Robot.colorSensorSubsystem.rotatePanel();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 
 }
