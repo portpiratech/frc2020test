@@ -19,11 +19,15 @@ public class EncoderTestSubsystem extends SubsystemBase {
   /**
    * Creates a new EncoderTest.
    */
+  private long startTime;
+  private long count;
   private TalonSRX encoderMotor;
   public EncoderTestSubsystem() {
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
     encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     encoderMotor.getSensorCollection().setQuadraturePosition(0, 10);
+    startTime = System.currentTimeMillis();
+    count = 0;
   }
 
   public void move(double speed){
@@ -31,7 +35,9 @@ public class EncoderTestSubsystem extends SubsystemBase {
   }
 
   public void output() {
+    count++;
     SmartDashboard.putNumber("Encoder Sensor Position", encoderMotor.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("Encoder Checks / Second", count / ((System.currentTimeMillis() - startTime) / 1000));
   }
 
 }
