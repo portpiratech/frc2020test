@@ -19,10 +19,15 @@ public class EncoderTestSubsystem extends SubsystemBase {
   /**
    * Creates a new EncoderTest.
    */
+  private int encoderCtsPerRev = 7;
+  private int encoderQuadMode = 4;
+  private int gearMotorRatio = 71;
+  private int GearMotorCtsPerRev = encoderCtsPerRev * encoderQuadMode * gearMotorRatio;
   private long startTime;
   private long count;
   private TalonSRX encoderMotor;
   public EncoderTestSubsystem() {
+    SmartDashboard.putNumber("GearMotorCtsPerRev", GearMotorCtsPerRev);
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
     encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     encoderMotor.getSensorCollection().setQuadraturePosition(0, 10);
