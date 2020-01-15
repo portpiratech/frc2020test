@@ -30,7 +30,8 @@ public class EncoderTestSubsystem extends SubsystemBase {
   }
 
   public void output() {
-    SmartDashboard.putNumber("Encoder", encoderMotor.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("Encoder Sensor Position", encoderMotor.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("Encoder Quadrature Position", encoderMotor.getSensorCollection().getQuadraturePosition());
   }
 
 }
