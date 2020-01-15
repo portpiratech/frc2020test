@@ -22,7 +22,7 @@ public class EncoderTestSubsystem extends SubsystemBase {
   private TalonSRX encoderMotor;
   public EncoderTestSubsystem() {
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
-    encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10)
+    encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
   }
 
   public void move(double speed){
