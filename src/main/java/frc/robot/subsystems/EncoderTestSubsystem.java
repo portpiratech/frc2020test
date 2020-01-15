@@ -8,8 +8,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
@@ -20,10 +22,12 @@ public class EncoderTestSubsystem extends SubsystemBase {
   private TalonSRX encoderMotor;
   public EncoderTestSubsystem() {
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
+    encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10)
   }
 
   public void move(double speed){
     encoderMotor.set(ControlMode.PercentOutput, speed);
+    SmartDashboard.putNumber("Encoder", encoderMotor.getSelectedSensorPosition(0));
   }
 
 }
