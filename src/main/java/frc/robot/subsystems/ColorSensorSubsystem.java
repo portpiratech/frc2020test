@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import frc.robot.OI;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
@@ -19,12 +19,13 @@ import com.revrobotics.ColorMatch;
 /**
  * Add your docs here.
  */
+
 public class ColorSensorSubsystem extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
-
+  public String lastColor;
   /**
    * A Rev Color Sensor V3 object is constructed with an I2C port as a 
    * parameter. The device will be automatically initialized with default 
@@ -85,22 +86,5 @@ public class ColorSensorSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("proximity", m_colorSensor.getProximity());
     
     return colorString;
-  }
-
-  public void rotatePanel(){
-    // Either use an encoder or check number of RGBY rotations
-    int count = 0;
-    int revolutions = 4;
-    String lastColor = getColors();
-    SmartDashboard.putString("Done", "");
-    while(count < 8*revolutions){
-      String color = getColors();
-      if(color != lastColor){
-        count++;
-        lastColor = color;
-      }
-      SmartDashboard.putNumber("count", count);
-    }
-    SmartDashboard.putString("Done", "Done");
   }
 }
