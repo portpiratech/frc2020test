@@ -32,7 +32,7 @@ public class EncoderTestCommand extends CommandBase {
     if(turning){
       Robot.encoderTestSubsystem.move(0);
     }else{
-      Robot.encoderTestSubsystem.move(0.9);
+      Robot.encoderTestSubsystem.move(0.1);
     }
     turning = !turning;
     finished = true;

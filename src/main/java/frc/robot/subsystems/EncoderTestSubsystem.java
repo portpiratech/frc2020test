@@ -23,6 +23,7 @@ public class EncoderTestSubsystem extends SubsystemBase {
   public EncoderTestSubsystem() {
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
     encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+    encoderMotor.getSensorCollection().setQuadraturePosition(0, 10);
   }
 
   public void move(double speed){
@@ -31,7 +32,6 @@ public class EncoderTestSubsystem extends SubsystemBase {
 
   public void output() {
     SmartDashboard.putNumber("Encoder Sensor Position", encoderMotor.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("Encoder Quadrature Position", encoderMotor.getSensorCollection().getQuadraturePosition());
   }
 
 }
