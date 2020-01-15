@@ -24,6 +24,8 @@ public class ColorControlCommand extends CommandBase {
   public void initialize() {
     String gameData;
     gameData = DriverStation.getInstance().getGameSpecificMessage();
+    SmartDashboard.putString("GameData", gameData);
+    /*
     if(gameData.length() > 0)
     {
       switch (gameData.charAt(0))
@@ -45,6 +47,7 @@ public class ColorControlCommand extends CommandBase {
           break;
       }
     }
+    */
   }
 
   // Called repeatedly when this Command is scheduled to run

@@ -84,5 +84,6 @@ public class OI {
     rightBumperDriver.whenPressed(new PistonCommand());
 
     yButtonDriver.whenPressed(new RotationControlCommand());
+    aButtonDriver.whenPressed(new ColorControlCommand());
   }
 }
