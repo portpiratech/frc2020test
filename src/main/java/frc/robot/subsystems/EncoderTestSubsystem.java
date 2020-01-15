@@ -38,6 +38,7 @@ public class EncoderTestSubsystem extends SubsystemBase {
     count++;
     SmartDashboard.putNumber("Encoder Sensor Position", encoderMotor.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("Encoder Checks / Second", count / ((System.currentTimeMillis() - startTime) / 1000));
+    //1988 per 360
   }
 
 }
