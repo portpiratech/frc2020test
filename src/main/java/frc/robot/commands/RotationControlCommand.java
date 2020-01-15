@@ -17,7 +17,7 @@ public class RotationControlCommand extends CommandBase {
    * Creates a new RotationControlCommand.
    */
   private int count;
-  private boolean finished = false;
+  private boolean finished;
   private String lastColor;
   public RotationControlCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,6 +29,7 @@ public class RotationControlCommand extends CommandBase {
     //Robot.colorSensorSubsystem.rotatePanelInit();
     lastColor = Robot.colorSensorSubsystem.getColors();
     count = 0;
+    finished = false;
     SmartDashboard.putString("Done", "");
   }
 
@@ -41,7 +42,7 @@ public class RotationControlCommand extends CommandBase {
       lastColor = color;
     }
     SmartDashboard.putNumber("count", count);
-    if(count >= 32 || OI.bButtonDriver.get()){
+    if(count >= 32 || OI.bButtonDriver.get() == true){
       finished = true;
     }
   }
