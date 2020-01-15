@@ -7,11 +7,13 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class ColorSensorCommand extends CommandBase {
-  public ColorSensorCommand() {
+public class ColorControlCommand extends CommandBase {
+  public ColorControlCommand() {
     addRequirements(Robot.colorSensorSubsystem);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -20,7 +22,29 @@ public class ColorSensorCommand extends CommandBase {
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
-    Robot.colorSensorSubsystem.rotatePanel();
+    String gameData;
+    gameData = DriverStation.getInstance().getGameSpecificMessage();
+    if(gameData.length() > 0)
+    {
+      switch (gameData.charAt(0))
+      {
+        case 'B' :
+          SmartDashboard.putString("GameData", "B");
+          break;
+        case 'G' :
+          SmartDashboard.putString("GameData", "G");
+          break;
+        case 'R' :
+          SmartDashboard.putString("GameData", "R");
+          break;
+        case 'Y' :
+          SmartDashboard.putString("GameData", "Y");
+          break;
+        default :
+          //This is corrupt data
+          break;
+      }
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run

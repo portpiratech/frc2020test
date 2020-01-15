@@ -9,8 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.ColorSensorCommand;
+import frc.robot.commands.ColorControlCommand;
 import frc.robot.commands.PistonCommand;
+import frc.robot.commands.RotationControlCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -82,6 +83,6 @@ public class OI {
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
-    yButtonDriver.whenPressed(new ColorSensorCommand());
+    yButtonDriver.whenPressed(new RotationControlCommand());
   }
 }
