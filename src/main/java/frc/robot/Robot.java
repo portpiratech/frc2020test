@@ -21,6 +21,7 @@ import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.EncoderOutputCommand;
 import frc.robot.subsystems.ColorSensorSubsystem;
 
 /**
@@ -65,6 +66,7 @@ public class Robot extends TimedRobot {
     cam.setFPS(25);
     CommandScheduler.getInstance().setDefaultCommand(colorSensorSubsystem, new ColorSensorCommand());
     CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new DriveCommand());
+    CommandScheduler.getInstance().setDefaultCommand(encoderTestSubsystem, new EncoderOutputCommand());
     
     //CameraServer.getInstance().startAutomaticCapture();
   }

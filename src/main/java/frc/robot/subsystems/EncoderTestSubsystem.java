@@ -27,6 +27,9 @@ public class EncoderTestSubsystem extends SubsystemBase {
 
   public void move(double speed){
     encoderMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void output() {
     SmartDashboard.putNumber("Encoder", encoderMotor.getSelectedSensorPosition(0));
   }
 
