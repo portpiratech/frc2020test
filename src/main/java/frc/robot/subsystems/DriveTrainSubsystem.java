@@ -16,14 +16,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.OI;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
-  private boolean tank = true;
+  private boolean arcade = false;
   private TalonSRX leftMotor;
   private TalonSRX rightMotor;
   private CANSparkMax leftMotor2;
@@ -49,7 +48,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void drive(){  
       double leftSpeed, rightSpeed;
     	
-    	if(tank)//Robot.driveMode == Robot.DriveMode.ArcadeDrive)
+    	if(arcade)//Robot.driveMode == Robot.DriveMode.ArcadeDrive)
     	{
         //arcade drive
     		double turnValue = OI.driverController.getX(Hand.kLeft);
@@ -88,7 +87,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void toggleDriveMode(){
-    tank = !tank;
+    arcade = !arcade;
   }
 }
 
