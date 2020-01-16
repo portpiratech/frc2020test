@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.Robot;
 
 public class EncoderTestCommand extends CommandBase {
@@ -36,7 +37,7 @@ public class EncoderTestCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.encoderTestSubsystem.output() >= maxCount){
+    if(Robot.encoderTestSubsystem.output() >= maxCount || OI.startButtonDriver.get()){
       finished = true;
     }
   }

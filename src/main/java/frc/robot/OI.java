@@ -58,8 +58,9 @@ public class OI {
   public static JoystickButton leftBumperOperator;
   public static JoystickButton rightBumperOperator;
   public static JoystickButton aButtonDriver;
-	public static JoystickButton bButtonDriver;
-	
+  public static JoystickButton bButtonDriver;
+  public static JoystickButton startButtonDriver;
+  
 	public OI() {
 		driverController = new XboxController(RobotMap.driverControllerId);
 		operatorController = new XboxController(RobotMap.operatorControllerId);
@@ -78,6 +79,7 @@ public class OI {
     rightBumperOperator = new JoystickButton(operatorController, 6);
     aButtonDriver = new JoystickButton(driverController, 1);
     bButtonDriver = new JoystickButton(driverController, 2);
+    startButtonDriver = new JoystickButton(driverController, 8);
 
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
