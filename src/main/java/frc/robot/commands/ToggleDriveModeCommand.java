@@ -25,7 +25,7 @@ public class ToggleDriveModeCommand extends CommandBase {
 
   // Called repeatedly when this Command is scheduled to run
   public void execute() {
-    Robot.toggleDriveMode.toggleDriveMode();
+    Robot.driveTrainSubsystem.toggleDriveMode();
   }
 
   // Make this return true when this Command no longer needs to run execute()

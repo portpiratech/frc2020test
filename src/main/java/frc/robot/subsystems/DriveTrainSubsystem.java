@@ -23,6 +23,7 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
+  private boolean tank = true;
   private TalonSRX leftMotor;
   private TalonSRX rightMotor;
   private CANSparkMax leftMotor2;
@@ -48,7 +49,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void drive(){  
       double leftSpeed, rightSpeed;
     	
-    	if(Robot.driveMode == Robot.DriveMode.ArcadeDrive)
+    	if(tank)//Robot.driveMode == Robot.DriveMode.ArcadeDrive)
     	{
         //arcade drive
     		double turnValue = OI.driverController.getX(Hand.kLeft);
@@ -84,6 +85,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
       rightMotor2.set(rightSpeed);
       SmartDashboard.putNumber("Left speed", leftSpeed);
       SmartDashboard.putNumber("Right speed", rightSpeed);
+  }
+
+  public void toggleDriveMode(){
+    tank = !tank;
   }
 }
 
