@@ -14,7 +14,13 @@ public class EncoderTestCommand extends CommandBase {
   /**
    * Creates a new EncoderTest.
    */
-  private boolean turning = false;
+  private int encoderCtsPerRev = 7;
+  private int encoderQuadMode = 4;
+  private int gearMotorRatio = 71;
+  private int GearMotorCtsPerRev = encoderCtsPerRev * encoderQuadMode * gearMotorRatio;
+  private int revolutions = 5;
+  private int maxCount = GearMotorCtsPerRev * revolutions;
+
   private boolean finished = false;
   public EncoderTestCommand() {
     addRequirements(Robot.encoderTestSubsystem);
@@ -24,23 +30,23 @@ public class EncoderTestCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.encoderTestSubsystem.move(0.3);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(turning){
-      Robot.encoderTestSubsystem.move(0);
-    }else{
-      Robot.encoderTestSubsystem.move(0.1);
+    if(Robot.encoderTestSubsystem.output() >= maxCount){
+      finished = true;
     }
-    turning = !turning;
-    finished = true;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Robot.encoderTestSubsystem.move(0);
+    Robot.encoderTestSubsystem.end();
+    finished = false;
   }
 
   // Returns true when the command should end.

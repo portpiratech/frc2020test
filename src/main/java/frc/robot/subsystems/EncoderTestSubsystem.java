@@ -19,15 +19,10 @@ public class EncoderTestSubsystem extends SubsystemBase {
   /**
    * Creates a new EncoderTest.
    */
-  private int encoderCtsPerRev = 7;
-  private int encoderQuadMode = 4;
-  private int gearMotorRatio = 71;
-  private int GearMotorCtsPerRev = encoderCtsPerRev * encoderQuadMode * gearMotorRatio;
   private long startTime;
   private long count;
   private TalonSRX encoderMotor;
   public EncoderTestSubsystem() {
-    SmartDashboard.putNumber("GearMotorCtsPerRev", GearMotorCtsPerRev);
     encoderMotor = new TalonSRX(RobotMap.encoderMotorID);
     encoderMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     encoderMotor.getSensorCollection().setQuadraturePosition(0, 10);
@@ -35,15 +30,20 @@ public class EncoderTestSubsystem extends SubsystemBase {
     count = 0;
   }
 
+  public void end(){
+    encoderMotor.getSensorCollection().setQuadraturePosition(0, 10);
+  }
+
   public void move(double speed){
     encoderMotor.set(ControlMode.PercentOutput, speed);
   }
 
-  public void output() {
+  public int output() {
     count++;
     SmartDashboard.putNumber("Encoder Sensor Position", encoderMotor.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("Encoder Checks / Second", count / ((System.currentTimeMillis() - startTime) / 1000));
     //1988 per 360
+    return encoderMotor.getSelectedSensorPosition(0);
   }
 
 }
