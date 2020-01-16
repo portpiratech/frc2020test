@@ -87,10 +87,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
       leftMotor.set(ControlMode.PercentOutput, leftSpeed);
       rightMotor.set(ControlMode.PercentOutput, rightSpeed);    	
       //press right bumper for halfspeed
-      leftMotor1.set(leftSpeed);
-      leftMotor2.set(leftSpeed);
-      rightMotor1.set(rightSpeed);
-      rightMotor2.set(rightSpeed);
+      leftMotor1.set(-leftSpeed);
+      leftMotor2.set(-leftSpeed);
+      rightMotor1.set(-rightSpeed);
+      rightMotor2.set(-rightSpeed);
       SmartDashboard.putNumber("Left speed", leftSpeed);
       SmartDashboard.putNumber("Right speed", rightSpeed);
   }
