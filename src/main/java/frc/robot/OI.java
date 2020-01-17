@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.EncoderTestCommand;
 import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
@@ -85,5 +86,6 @@ public class OI {
     rightBumperDriver.whenPressed(new PistonCommand());
 
     aButtonDriver.whenPressed(new EncoderTestCommand());
+    bButtonDriver.whenPressed(new ColorSensorCommand());
   }
 }
