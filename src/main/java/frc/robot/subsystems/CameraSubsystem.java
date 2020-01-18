@@ -40,4 +40,8 @@ public class CameraSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Degrees from target (Y)", y);
         SmartDashboard.putNumber("Percentage of target", area);
     }
+
+    public void setCamMode(int mode){
+        NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
+    }
 }
