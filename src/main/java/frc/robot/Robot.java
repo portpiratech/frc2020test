@@ -19,10 +19,12 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
+import frc.robot.commands.AccelerometerCommand;
 import frc.robot.commands.CameraCommand;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.GyroCommand;
+import frc.robot.subsystems.AccelerometerSubsystem;
 import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 
@@ -50,6 +52,7 @@ public class Robot extends TimedRobot {
   public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
   public static CameraSubsystem cameraSubsystem = new CameraSubsystem();
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
+  public static AccelerometerSubsystem accelerometerSubsystem = new AccelerometerSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -71,7 +74,7 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new DriveCommand());
     CommandScheduler.getInstance().setDefaultCommand(cameraSubsystem, new CameraCommand());
     CommandScheduler.getInstance().setDefaultCommand(gyroSubsystem, new GyroCommand());
-    
+    CommandScheduler.getInstance().setDefaultCommand(accelerometerSubsystem, new AccelerometerCommand());
     
     //CameraServer.getInstance().startAutomaticCapture();
   }
