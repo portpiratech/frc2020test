@@ -14,7 +14,7 @@ public class AimCameraCommand extends CommandBase {
   /**
    * Creates a new AimCameraCommand.
    */
-  double deadband = 0.1;
+  private double deadband = 0.1;
   public AimCameraCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.cameraSubsystem);
