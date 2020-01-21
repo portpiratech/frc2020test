@@ -22,6 +22,7 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
+  private double deadband = 0.05;
   private boolean arcade = false;
   private TalonSRX leftMotor;
   private TalonSRX rightMotor;
@@ -68,10 +69,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
         	leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
         	rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
       }
-      if(Math.abs(leftSpeed) <= RobotMap.deadband){
+      if(Math.abs(leftSpeed) <= deadband){
         leftSpeed = 0;
       }
-      if(Math.abs(rightSpeed) <= RobotMap.deadband){
+      if(Math.abs(rightSpeed) <= deadband){
         rightSpeed = 0;
       }
       //leftMotor.setInverted(true);
