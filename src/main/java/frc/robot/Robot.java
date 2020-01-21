@@ -20,6 +20,7 @@ import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
 import frc.robot.commands.AccelerometerCommand;
+import frc.robot.commands.AimCameraCommand;
 import frc.robot.commands.CameraCommand;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
@@ -75,6 +76,7 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().setDefaultCommand(cameraSubsystem, new CameraCommand());
     CommandScheduler.getInstance().setDefaultCommand(gyroSubsystem, new GyroCommand());
     CommandScheduler.getInstance().setDefaultCommand(accelerometerSubsystem, new AccelerometerCommand());
+    CommandScheduler.getInstance().setDefaultCommand(cameraSubsystem, new AimCameraCommand());
     
     //CameraServer.getInstance().startAutomaticCapture();
   }
