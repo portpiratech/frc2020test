@@ -19,13 +19,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 /**
  * Add your docs here.
  */
+
+
 public class CameraSubsystem extends SubsystemBase {
 
     NetworkTable table;
-    //TalonSRX xMotor;
+    private double cameraAngle = 0;
+    private double targetHeight = 58.5/12.0;
+    private double cameraHeight = 26/12.0;
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
-        //xMotor = new TalonSRX(11);
     }
 
     public void outputToSmartDashboard() {
@@ -48,14 +51,30 @@ public class CameraSubsystem extends SubsystemBase {
     public void setCamMode(int mode){
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
     }
-/*
-    public void setXSpeed(double speed){
-        xMotor.set(ControlMode.PercentOutput, speed);
+
+    public double hasTarget(){
+        NetworkTableEntry tv = table.getEntry("tv");
+        double v = tv.getDouble(0.0);
+        return v;
     }
-*/
+
     public double getXAngle(){
         NetworkTableEntry tx = table.getEntry("tx");
         double x = tx.getDouble(0.0);
         return x;
+    }
+
+    public double getYAngle(){
+        NetworkTableEntry ty = table.getEntry("ty");
+        double y = ty.getDouble(0.0);
+        return y;
+    }
+
+    public double getDistance(){
+        double angle = Math.toRadians(cameraAngle + getYAngle());
+        double heightChange = targetHeight - cameraHeight;
+        double distance = heightChange / (Math.tan(angle));
+        SmartDashboard.putNumber("Distance", distance);
+        return distance;
     }
 }

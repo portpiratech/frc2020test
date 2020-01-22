@@ -24,6 +24,7 @@ public class CameraCommand extends CommandBase {
   @Override
   public void execute() {
     Robot.cameraSubsystem.outputToSmartDashboard();
+    Robot.cameraSubsystem.getDistance();
   }
 
   // Make this return true when this Command no longer needs to run execute()

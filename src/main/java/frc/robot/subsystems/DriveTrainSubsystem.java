@@ -101,5 +101,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
     rightMotor1.set(speed);
     rightMotor2.set(speed);
   }
+
+  public void set(double left, double right){
+    leftMotor1.set(left);
+    leftMotor2.set(left);
+    rightMotor1.set(-right);
+    rightMotor2.set(-right);
+  }
 }
 
