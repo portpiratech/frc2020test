@@ -94,5 +94,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
       SmartDashboard.putNumber("Left speed", leftSpeed);
       SmartDashboard.putNumber("Right speed", rightSpeed);
   }
+
+  public void turn(double speed){
+    leftMotor1.set(speed);
+    leftMotor2.set(speed);
+    rightMotor1.set(speed);
+    rightMotor2.set(speed);
+  }
 }
 

@@ -14,10 +14,11 @@ public class AimCameraCommand extends CommandBase {
   /**
    * Creates a new AimCameraCommand.
    */
-  private double deadband = 0.1;
+  private double gainX = 0.005;
   public AimCameraCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.cameraSubsystem);
+    addRequirements(Robot.driveTrainSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -28,13 +29,7 @@ public class AimCameraCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.cameraSubsystem.getXAngle() < -deadband){
-      Robot.cameraSubsystem.setXSpeed(0.1);
-    }else if(Robot.cameraSubsystem.getXAngle() > deadband){
-      Robot.cameraSubsystem.setXSpeed(-0.1);
-    }else{
-      Robot.cameraSubsystem.setXSpeed(0);
-    }
+    Robot.driveTrainSubsystem.turn(-Robot.cameraSubsystem.getXAngle() * gainX);
   }
 
   // Called once the command ends or is interrupted.

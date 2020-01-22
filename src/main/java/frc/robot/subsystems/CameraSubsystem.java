@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+//import com.ctre.phoenix.motorcontrol.ControlMode;
+//import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -22,10 +22,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class CameraSubsystem extends SubsystemBase {
 
     NetworkTable table;
-    TalonSRX xMotor;
+    //TalonSRX xMotor;
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
-        xMotor = new TalonSRX(11);
+        //xMotor = new TalonSRX(11);
     }
 
     public void outputToSmartDashboard() {
@@ -48,11 +48,11 @@ public class CameraSubsystem extends SubsystemBase {
     public void setCamMode(int mode){
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
     }
-
+/*
     public void setXSpeed(double speed){
         xMotor.set(ControlMode.PercentOutput, speed);
     }
-
+*/
     public double getXAngle(){
         NetworkTableEntry tx = table.getEntry("tx");
         double x = tx.getDouble(0.0);

@@ -23,7 +23,7 @@ import frc.robot.commands.AccelerometerCommand;
 import frc.robot.commands.AimCameraCommand;
 import frc.robot.commands.CameraCommand;
 import frc.robot.commands.ColorSensorCommand;
-import frc.robot.commands.DriveCommand;
+//import frc.robot.commands.DriveCommand;
 import frc.robot.commands.GyroCommand;
 import frc.robot.subsystems.AccelerometerSubsystem;
 import frc.robot.subsystems.CameraSubsystem;
@@ -72,11 +72,11 @@ public class Robot extends TimedRobot {
     cam.setResolution(240, 220);
     cam.setFPS(25);
     CommandScheduler.getInstance().setDefaultCommand(colorSensorSubsystem, new ColorSensorCommand());
-    CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new DriveCommand());
+    //CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new DriveCommand());
     CommandScheduler.getInstance().setDefaultCommand(cameraSubsystem, new CameraCommand());
     CommandScheduler.getInstance().setDefaultCommand(gyroSubsystem, new GyroCommand());
     CommandScheduler.getInstance().setDefaultCommand(accelerometerSubsystem, new AccelerometerCommand());
-    CommandScheduler.getInstance().setDefaultCommand(cameraSubsystem, new AimCameraCommand());
+    CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new AimCameraCommand());
     
     //CameraServer.getInstance().startAutomaticCapture();
   }
