@@ -19,6 +19,7 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.ToggleDriveModeSubsystem;
+import frc.robot.subsystems.TurretSubsystem;
 import frc.robot.commands.AccelerometerCommand;
 import frc.robot.commands.CameraCommand;
 import frc.robot.commands.ColorSensorCommand;
@@ -55,6 +56,7 @@ public class Robot extends TimedRobot {
   public static CameraSubsystem cameraSubsystem = new CameraSubsystem();
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
   public static AccelerometerSubsystem accelerometerSubsystem = new AccelerometerSubsystem();
+  public static TurretSubsystem turretSubsystem = new TurretSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
