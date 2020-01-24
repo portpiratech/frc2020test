@@ -17,6 +17,7 @@ public class TurretCommand extends CommandBase {
    */
   private double gainX = 0.005;
   private double maxSpeedturn = 0.1;
+  private boolean finished = false;
   public TurretCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.turretSubsystem);
@@ -39,6 +40,9 @@ public class TurretCommand extends CommandBase {
     }else{
       Robot.turretSubsystem.setXMotor(0);
     }
+    if(OI.startButtonDriver.get()){
+      finished = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
@@ -49,6 +53,6 @@ public class TurretCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return OI.startButtonDriver.get();
+    return finished;
   }
 }
