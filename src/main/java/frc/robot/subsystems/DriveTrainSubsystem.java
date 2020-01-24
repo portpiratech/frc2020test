@@ -103,6 +103,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void set(double left, double right){
+    SmartDashboard.putNumber("left", left);
+    SmartDashboard.putNumber("right", right);
     leftMotor1.set(left);
     leftMotor2.set(left);
     rightMotor1.set(-right);

@@ -15,9 +15,10 @@ public class AimCameraCommand extends CommandBase {
    * Creates a new AimCameraCommand.
    */
   private double gainX = 0.005;
-  private double minDistance = 5;
-  private double gainDist = 0.01;
-  private double maxSpeed = 0.2;
+  private double minDistance = 7;
+  private double gainDist = 0.04;
+  private double maxSpeedDist = 0.4;
+  private double maxSpeedturn = 0.1;
   public AimCameraCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.driveTrainSubsystem);
@@ -31,26 +32,24 @@ public class AimCameraCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Robot.driveTrainSubsystem.turn(-Robot.cameraSubsystem.getXAngle() * gainX);
-    if(Robot.cameraSubsystem.hasTarget() == 1){
-      double left = -Robot.cameraSubsystem.getXAngle() * gainX;
-      double right = Robot.cameraSubsystem.getXAngle() * gainX;
-      double distance = Robot.cameraSubsystem.getDistance();
-      if(distance > minDistance){
-        left += (distance - minDistance) * gainDist;
-        right += (distance - minDistance) * gainDist;
-        if(left > maxSpeed){
-          left = maxSpeed;
-        }
-        if(right > maxSpeed){
-          right = maxSpeed;
-        }
-        Robot.driveTrainSubsystem.set(left, right);
-      }else{
-        Robot.driveTrainSubsystem.set(0, 0);
+    // Robot.driveTrainSubsystem.turn(-Robot.cameraSubsystem.getXAngle() * gainX);
+    if(Robot.cameraSubsystem.hasTarget() > 0.5){
+      double turnSpeed = Robot.cameraSubsystem.getXAngle() * gainX;
+      if(turnSpeed > maxSpeedturn){
+        turnSpeed = maxSpeedturn;
       }
+      double left = -turnSpeed;
+      double right = turnSpeed;
+      double distance = Robot.cameraSubsystem.getDistance();
+      double distanceSpeed = (distance - minDistance) * gainDist;
+      if(distanceSpeed > maxSpeedDist){
+        distanceSpeed = maxSpeedDist;
+      }
+      left += distanceSpeed;
+      right += distanceSpeed;
+      Robot.driveTrainSubsystem.set(left, right);
     }else{
-      Robot.driveTrainSubsystem.set(0, 0);
+      Robot.driveTrainSubsystem.set(-0.01, -0.01);
     }
   }
 

@@ -36,7 +36,7 @@ public class RobotMap {
   public static double throttleTolerance = 0.08;
   //public static int greenWheelMotorID = 3; 
  
-  public static double driveSpeedMultiplier = 0.6;
+  public static double driveSpeedMultiplier = 0.2;
   public static double liftSpeed = 0.6;
   public static double backLiftSpeed = 0.6;
   public static double lifterSpeedMultiplier = 0.6;

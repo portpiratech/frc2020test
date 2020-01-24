@@ -25,7 +25,7 @@ public class CameraSubsystem extends SubsystemBase {
 
     NetworkTable table;
     private double cameraAngle = 0;
-    private double targetHeight = 58.5/12.0;
+    private double targetHeight = 57/12.0;//58.5/12.0;
     private double cameraHeight = 26/12.0;
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
