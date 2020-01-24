@@ -8,21 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
 
-public class TheCrmounch extends CommandBase {
+public class AimTurretCommand extends CommandBase {
   /**
-   * Creates a new AimCameraCommand.
+   * Creates a new AimTurretCommand.
    */
-  private double gainX = 0.005;
-  private double minDistance = 7;
-  private double gainDist = 0.04;
-  private double maxSpeedDist = 0.4;
-  private double maxSpeedturn = 0.1;
-
-  public TheCrmounch() {
+  public AimTurretCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.driveTrainSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -33,24 +25,6 @@ public class TheCrmounch extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.cameraSubsystem.hasTarget() > 0.5){
-      double turnSpeed = Robot.cameraSubsystem.getXAngle() * gainX;
-      if(turnSpeed > maxSpeedturn){
-        turnSpeed = maxSpeedturn;
-      }
-      double left = -turnSpeed;
-      double right = turnSpeed;
-      double distance = Robot.cameraSubsystem.getDistance();
-      double distanceSpeed = (distance - minDistance) * gainDist;
-      if(distanceSpeed > maxSpeedDist){
-        distanceSpeed = maxSpeedDist;
-      }
-      left += distanceSpeed;
-      right += distanceSpeed;
-      Robot.driveTrainSubsystem.set(left, right);
-    }else{
-      Robot.driveTrainSubsystem.set(-0.01, -0.01);
-    }
   }
 
   // Called once the command ends or is interrupted.
