@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class AimCameraCommand extends CommandBase {
+public class TheCrmounch extends CommandBase {
   /**
    * Creates a new AimCameraCommand.
    */
@@ -19,7 +19,8 @@ public class AimCameraCommand extends CommandBase {
   private double gainDist = 0.04;
   private double maxSpeedDist = 0.4;
   private double maxSpeedturn = 0.1;
-  public AimCameraCommand() {
+
+  public TheCrmounch() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.driveTrainSubsystem);
   }
