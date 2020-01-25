@@ -11,15 +11,15 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 public class TurretSubsystem extends SubsystemBase {
   /**
    * Creates a new TurretSubsystem.
    */
-  private int xMotorID = 5;
   private TalonSRX xMotor;
   public TurretSubsystem() {
-    xMotor = new TalonSRX(xMotorID);
+    xMotor = new TalonSRX(RobotMap.turretXMotorID);
   }
 
   public void setXMotor(double speed){
