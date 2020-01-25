@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.RemoteLimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,8 +25,8 @@ public class TurretSubsystem extends SubsystemBase {
   private TalonSRX xMotor;
   public TurretSubsystem() {
     xMotor = new TalonSRX(RobotMap.turretXMotorID);
-    xMotor.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
-    xMotor.configReverseLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+    xMotor.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyClosed, RobotMap.turretXMotorID, 10);
+    xMotor.configReverseLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyClosed, RobotMap.turretXMotorID, 10);
     xMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     xMotor.getSensorCollection().setQuadraturePosition(0, 10);
   }
@@ -37,10 +38,12 @@ public class TurretSubsystem extends SubsystemBase {
 
   public double getPosition(){
     SmartDashboard.putNumber("Position", xMotor.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("Forward Limit Switch", xMotor.isFwdLimitSwitchClosed());
+    SmartDashboard.putNumber("Reverse Limit Switch", xMotor.isRevLimitSwitchClosed());
     return xMotor.getSelectedSensorPosition(0);
   }
 
-  public int getForwardLimitSwitch(){
+  /*public int getForwardLimitSwitch(){
     SmartDashboard.putNumber("Forward Limit Switch", xMotor.isFwdLimitSwitchClosed());
     return xMotor.isFwdLimitSwitchClosed();
   }
@@ -48,5 +51,5 @@ public class TurretSubsystem extends SubsystemBase {
   public int getReverseLimitSwitch(){
     SmartDashboard.putNumber("Reverse Limit Switch", xMotor.isRevLimitSwitchClosed());
     return xMotor.isRevLimitSwitchClosed();
-  }
+  }*/
 }
