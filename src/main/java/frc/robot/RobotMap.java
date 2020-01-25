@@ -29,7 +29,7 @@ public class RobotMap {
   public static int rightSparkMaxID1 = 5;
   public static int leftSparkMaxID2 = 4;
   public static int rightSparkMaxID2 = 6;
-  public static int leftMotorID = 9;
+  public static int leftMotorID = 11;
   public static int rightMotorID = 12;
   
   public static double throttleTolerance = 0.08;
@@ -43,5 +43,5 @@ public class RobotMap {
   public static int solenoid2_port2 = 3; //DoubleSolenoid
   
 
-  public static int encoderMotorID = 11;
+  public static int encoderMotorID = 9;
 } 
