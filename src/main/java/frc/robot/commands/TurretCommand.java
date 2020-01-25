@@ -8,16 +8,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.OI;
 import frc.robot.Robot;
 
 public class TurretCommand extends CommandBase {
   /**
    * Creates a new AimTurretCommand.
    */
-  private double gainX = 0.005;
-  private double maxSpeedturn = 0.1;
-  private boolean finished = false;
+  private double gainX = 0.25;
+  private double maxSpeedturn = 1;
+  private double defaultSpeed = 0.5;
   public TurretCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.turretSubsystem);
@@ -38,10 +37,13 @@ public class TurretCommand extends CommandBase {
       }
       Robot.turretSubsystem.setXMotor(turnSpeed);
     }else{
-      Robot.turretSubsystem.setXMotor(0);
+      Robot.turretSubsystem.setXMotor(defaultSpeed);
     }
-    if(OI.startButtonDriver.get()){
-      finished = true;
+    if(defaultSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitch() == 1){
+      defaultSpeed = -defaultSpeed;
+    }
+    if(defaultSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitch() == 1){
+      defaultSpeed = -defaultSpeed;
     }
     Robot.turretSubsystem.getPosition();
   }
@@ -54,6 +56,6 @@ public class TurretCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return finished;
+    return false;
   }
 }
