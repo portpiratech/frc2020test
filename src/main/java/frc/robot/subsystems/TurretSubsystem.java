@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
-import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.RemoteLimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -43,7 +42,7 @@ public class TurretSubsystem extends SubsystemBase {
     return xMotor.getSelectedSensorPosition(0);
   }
 
-  /*public int getForwardLimitSwitch(){
+  public int getForwardLimitSwitch(){
     SmartDashboard.putNumber("Forward Limit Switch", xMotor.isFwdLimitSwitchClosed());
     return xMotor.isFwdLimitSwitchClosed();
   }
@@ -51,5 +50,5 @@ public class TurretSubsystem extends SubsystemBase {
   public int getReverseLimitSwitch(){
     SmartDashboard.putNumber("Reverse Limit Switch", xMotor.isRevLimitSwitchClosed());
     return xMotor.isRevLimitSwitchClosed();
-  }*/
+  }
 }

@@ -38,12 +38,18 @@ public class TheCrmounch extends CommandBase {
       if(turnSpeed > maxSpeedturn){
         turnSpeed = maxSpeedturn;
       }
+      if(turnSpeed < -maxSpeedturn){
+        turnSpeed = -maxSpeedturn;
+      }
       double left = -turnSpeed;
       double right = turnSpeed;
       double distance = Robot.cameraSubsystem.getDistance();
       double distanceSpeed = (distance - minDistance) * gainDist;
       if(distanceSpeed > maxSpeedDist){
         distanceSpeed = maxSpeedDist;
+      }
+      if(distanceSpeed < -maxSpeedDist){
+        distanceSpeed = -maxSpeedDist;
       }
       left += distanceSpeed;
       right += distanceSpeed;
