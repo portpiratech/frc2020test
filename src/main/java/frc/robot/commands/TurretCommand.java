@@ -35,16 +35,19 @@ public class TurretCommand extends CommandBase {
       if(turnSpeed > maxSpeedturn){
         turnSpeed = maxSpeedturn;
       }
+      if(turnSpeed < -maxSpeedturn){
+        turnSpeed = -maxSpeedturn;
+      }
       Robot.turretSubsystem.setXMotor(turnSpeed);
     }else{
       Robot.turretSubsystem.setXMotor(defaultSpeed);
     }
-    if(defaultSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitch() == 1){
+    /*if(defaultSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitch() == 1){
       defaultSpeed = -defaultSpeed;
     }
     if(defaultSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitch() == 1){
       defaultSpeed = -defaultSpeed;
-    }
+    }*/
     Robot.turretSubsystem.getPosition();
   }
 
