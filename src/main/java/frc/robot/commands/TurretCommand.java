@@ -43,6 +43,7 @@ public class TurretCommand extends CommandBase {
     if(OI.startButtonDriver.get()){
       finished = true;
     }
+    Robot.turretSubsystem.getPosition();
   }
 
   // Called once the command ends or is interrupted.
