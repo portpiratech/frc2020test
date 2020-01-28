@@ -14,9 +14,13 @@ public class TurretCommand extends CommandBase {
   /**
    * Creates a new AimTurretCommand.
    */
+  private double targetYAngle = 4*Math.PI;
+  private double gainY = 0.9;
+  private double maxSpeedY = 0.6;
+
   private double gainX = 0.25;
-  private double maxSpeedturn = 1;
-  private double defaultSpeed = 0.5;
+  private double maxSpeedX = 1;
+  private double defaultXSpeed = 0.5;
   public TurretCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.turretSubsystem);
@@ -31,30 +35,39 @@ public class TurretCommand extends CommandBase {
   @Override
   public void execute() {
     if(Robot.cameraSubsystem.hasTarget() > 0.5){
-      double turnSpeed = Robot.cameraSubsystem.getXAngle() * gainX;
-      if(turnSpeed > maxSpeedturn){
-        turnSpeed = maxSpeedturn;
+      double turnSpeedX = Robot.cameraSubsystem.getXAngle() * gainX;
+      if(turnSpeedX > maxSpeedX){
+        turnSpeedX = maxSpeedX;
       }
-      if(turnSpeed < -maxSpeedturn){
-        turnSpeed = -maxSpeedturn;
+      if(turnSpeedX < -maxSpeedX){
+        turnSpeedX = -maxSpeedX;
       }
-      if(turnSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitch() == 0){
+      if(turnSpeedX > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0){
         Robot.turretSubsystem.setXMotor(0);
-      }else if(turnSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitch() == 0){
+      }else if(turnSpeedX < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0){
         Robot.turretSubsystem.setXMotor(0);
       }else{
-        Robot.turretSubsystem.setXMotor(turnSpeed);
+        Robot.turretSubsystem.setXMotor(turnSpeedX);
       }
     }else{
-      Robot.turretSubsystem.setXMotor(defaultSpeed);
+      Robot.turretSubsystem.setXMotor(defaultXSpeed);
     }
-    if(defaultSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitch() == 0){
-      defaultSpeed = -defaultSpeed;
+    if(defaultXSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0){
+      defaultXSpeed = -defaultXSpeed;
     }
-    if(defaultSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitch() == 0){
-      defaultSpeed = -defaultSpeed;
+    if(defaultXSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0){
+      defaultXSpeed = -defaultXSpeed;
     }
-    Robot.turretSubsystem.getPosition();
+    // Robot.turretSubsystem.getXPosition();
+    double turnSpeedY = (targetYAngle - Robot.turretSubsystem.getYAngle()) * gainY;
+    if(turnSpeedY > maxSpeedY){
+      turnSpeedY = maxSpeedY;
+    }else if(turnSpeedY < -maxSpeedY){
+      turnSpeedY = -maxSpeedY;
+    }
+    // Robot.turretSubsystem.setYMotor(turnSpeedY);
+    Robot.turretSubsystem.getForwardLimitSwitchY();
+    Robot.turretSubsystem.getReverseLimitSwitchY();
   }
 
   // Called once the command ends or is interrupted.

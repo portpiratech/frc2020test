@@ -68,4 +68,5 @@ public class RobotMap {
   public static int solenoid2_port2 = 3; //DoubleSolenoid
   
   public static int turretXMotorID = 7;
-} 
+  public static int turretYMotorID = 11;
+}

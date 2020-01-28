@@ -21,6 +21,8 @@ public class TurretSubsystem extends SubsystemBase {
   /**
    * Creates a new TurretSubsystem.
    */
+  private double countsPerRev = 1988;
+  private TalonSRX yMotor;
   private TalonSRX xMotor;
   public TurretSubsystem() {
     xMotor = new TalonSRX(RobotMap.turretXMotorID);
@@ -28,6 +30,12 @@ public class TurretSubsystem extends SubsystemBase {
     xMotor.configReverseLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyClosed, RobotMap.turretXMotorID, 10);
     xMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     xMotor.getSensorCollection().setQuadraturePosition(0, 10);
+
+    yMotor = new TalonSRX(RobotMap.turretYMotorID);
+    yMotor.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyClosed, RobotMap.turretYMotorID, 10);
+    yMotor.configReverseLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyClosed, RobotMap.turretYMotorID, 10);
+    yMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+    yMotor.getSensorCollection().setQuadraturePosition(0, 10);
   }
 
   public void setXMotor(double speed){
@@ -35,20 +43,40 @@ public class TurretSubsystem extends SubsystemBase {
     xMotor.set(ControlMode.PercentOutput, speed);
   }
 
-  public double getPosition(){
+  public double getXPosition(){
     SmartDashboard.putNumber("Position", xMotor.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("Forward Limit Switch", xMotor.isFwdLimitSwitchClosed());
     SmartDashboard.putNumber("Reverse Limit Switch", xMotor.isRevLimitSwitchClosed());
     return xMotor.getSelectedSensorPosition(0);
   }
 
-  public int getForwardLimitSwitch(){
+  public int getForwardLimitSwitchX(){
     SmartDashboard.putNumber("Forward Limit Switch", xMotor.isFwdLimitSwitchClosed());
     return xMotor.isFwdLimitSwitchClosed();
   }
 
-  public int getReverseLimitSwitch(){
+  public int getReverseLimitSwitchX(){
     SmartDashboard.putNumber("Reverse Limit Switch", xMotor.isRevLimitSwitchClosed());
     return xMotor.isRevLimitSwitchClosed();
+  }
+
+  public void setYMotor(double speed){
+    SmartDashboard.putNumber("y Speed", speed);
+    yMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public double getYAngle(){
+    SmartDashboard.putNumber("Y Angle", yMotor.getSelectedSensorPosition(0)*Math.PI*2/countsPerRev);
+    return yMotor.getSelectedSensorPosition(0)*Math.PI*2/countsPerRev;
+  }
+
+  public int getForwardLimitSwitchY(){
+    SmartDashboard.putNumber("Forward Limit Switch", yMotor.isFwdLimitSwitchClosed());
+    return yMotor.isFwdLimitSwitchClosed();
+  }
+
+  public int getReverseLimitSwitchY(){
+    SmartDashboard.putNumber("Reverse Limit Switch", yMotor.isRevLimitSwitchClosed());
+    return yMotor.isRevLimitSwitchClosed();
   }
 }
