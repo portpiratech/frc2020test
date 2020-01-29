@@ -58,14 +58,19 @@ public class TurretCommand extends CommandBase {
     if(defaultXSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0){
       defaultXSpeed = -defaultXSpeed;
     }
-    // Robot.turretSubsystem.getXPosition();
     double turnSpeedY = (targetYAngle - Robot.turretSubsystem.getYAngle()) * gainY;
     if(turnSpeedY > maxSpeedY){
       turnSpeedY = maxSpeedY;
     }else if(turnSpeedY < -maxSpeedY){
       turnSpeedY = -maxSpeedY;
     }
-    // Robot.turretSubsystem.setYMotor(turnSpeedY);
+    if(turnSpeedY > 0 && Robot.turretSubsystem.getForwardLimitSwitchY() == 1){
+      Robot.turretSubsystem.setYMotor(0);
+    }else if(turnSpeedY < 0 && Robot.turretSubsystem.getReverseLimitSwitchY() == 1){
+      Robot.turretSubsystem.setYMotor(0);
+    }else{
+      Robot.turretSubsystem.setYMotor(turnSpeedY);
+    }
     Robot.turretSubsystem.getForwardLimitSwitchY();
     Robot.turretSubsystem.getReverseLimitSwitchY();
   }
