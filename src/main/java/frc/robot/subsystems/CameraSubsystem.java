@@ -15,6 +15,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
@@ -25,8 +26,9 @@ public class CameraSubsystem extends SubsystemBase {
 
     NetworkTable table;
     private double cameraAngle = 0;
-    private double targetHeight = 57/12.0;//58.5/12.0;
+    private double targetHeight = 57/12.0;
     private double cameraHeight = 26/12.0;
+    private double cameraOffset = 0.3;
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
@@ -73,8 +75,22 @@ public class CameraSubsystem extends SubsystemBase {
     public double getDistance(){
         double angle = Math.toRadians(cameraAngle + getYAngle());
         double heightChange = targetHeight - cameraHeight;
-        double distance = heightChange / (Math.tan(angle));
+        double distance = (heightChange / (Math.tan(angle))) + cameraOffset;
         SmartDashboard.putNumber("Distance", distance);
         return distance;
+    }
+
+    public double getTargetAngle(){
+        double height = targetHeight - cameraHeight;
+        double b = Math.acos((((9.8 * Math.pow(getDistance(), 2)) / Math.pow(RobotMap.velocity, 2)) + height)/(Math.sqrt(Math.pow(height, 2) + Math.pow(getDistance(), 2))));
+        return (b + Math.atan(getDistance()/height))/2;
+    }
+
+    public double getTargetAngle2(){
+        double d = getDistance();
+        double v = RobotMap.velocity;
+        double h = targetHeight - cameraHeight;
+        double a = 0.5 * -9.8 * (Math.pow(d, 2) / Math.pow(v, 2));
+        return (-d + Math.sqrt(Math.pow(d, 2) - 4 * (a) * (a - h)))/(2 * a);
     }
 }

@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
@@ -25,6 +26,8 @@ public class CameraCommand extends CommandBase {
   public void execute() {
     Robot.cameraSubsystem.outputToSmartDashboard();
     Robot.cameraSubsystem.getDistance();
+    SmartDashboard.putNumber("angle calc 1", Robot.cameraSubsystem.getTargetAngle());
+    SmartDashboard.putNumber("angle calc 2", Robot.cameraSubsystem.getTargetAngle2());
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.CameraModeCommand;
 import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
-import frc.robot.commands.TurretCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -87,7 +86,6 @@ public class OI {
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
-    // xButtonDriver.whenPressed(new TurretCommand());
     yButtonDriver.whenPressed(new CameraModeCommand());
   }
 }

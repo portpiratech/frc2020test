@@ -69,4 +69,5 @@ public class RobotMap {
   
   public static int turretXMotorID = 7;
   public static int turretYMotorID = 11;
+  public static double velocity = 13.4;
 }
