@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.CameraModeCommand;
 import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
+import frc.robot.commands.TurretCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -59,6 +60,7 @@ public class OI {
   public static JoystickButton rightBumperOperator;
   public static JoystickButton aButtonDriver;
   public static JoystickButton bButtonDriver;
+  public static JoystickButton xButtonDriver;
   public static JoystickButton startButtonDriver;
 	
 	public OI() {
@@ -79,11 +81,13 @@ public class OI {
     rightBumperOperator = new JoystickButton(operatorController, 6);
     aButtonDriver = new JoystickButton(driverController, 1);
     bButtonDriver = new JoystickButton(driverController, 2);
+    xButtonDriver = new JoystickButton(driverController, 3);
     startButtonDriver = new JoystickButton(driverController, 8);
 
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
+    // xButtonDriver.whenPressed(new TurretCommand());
     yButtonDriver.whenPressed(new CameraModeCommand());
   }
 }

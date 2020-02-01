@@ -32,10 +32,10 @@ public class TurretSubsystem extends SubsystemBase {
     xMotor.getSensorCollection().setQuadraturePosition(0, 10);
 
     yMotor = new TalonSRX(RobotMap.turretYMotorID);
-    yMotor.configForwardLimitSwitchSource(RemoteLimitSwitchSource.Deactivated, LimitSwitchNormal.Disabled, RobotMap.turretYMotorID, 10);
-    yMotor.configReverseLimitSwitchSource(RemoteLimitSwitchSource.Deactivated, LimitSwitchNormal.Disabled, RobotMap.turretYMotorID, 10);
+    yMotor.configForwardLimitSwitchSource(RemoteLimitSwitchSource.Deactivated, LimitSwitchNormal.NormallyOpen, RobotMap.turretYMotorID, 10);
+    yMotor.configReverseLimitSwitchSource(RemoteLimitSwitchSource.Deactivated, LimitSwitchNormal.NormallyOpen, RobotMap.turretYMotorID, 10);
     yMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-    yMotor.getSensorCollection().setQuadraturePosition(0, 10);
+    // yMotor.getSensorCollection().setQuadraturePosition(0, 10);
   }
 
   public void setXMotor(double speed){
@@ -76,5 +76,9 @@ public class TurretSubsystem extends SubsystemBase {
   public int getReverseLimitSwitchY(){
     SmartDashboard.putNumber("Reverse Limit Switch Y", yMotor.isRevLimitSwitchClosed());
     return yMotor.isRevLimitSwitchClosed();
+  }
+
+  public void resetEncoder(){
+    yMotor.getSensorCollection().setQuadraturePosition(0, 10);
   }
 }
