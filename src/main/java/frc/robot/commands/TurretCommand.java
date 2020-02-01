@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
@@ -14,9 +15,9 @@ public class TurretCommand extends CommandBase {
   /**
    * Creates a new AimTurretCommand.
    */
-  private double targetYAngle = 4*Math.PI;
+  private double targetYAngle = 0;
   private double gainY = 0.9;
-  private double maxSpeedY = 0.6;
+  private double maxSpeedY = 0.2;
 
   private double gainX = 0.25;
   private double maxSpeedX = 1;
@@ -29,6 +30,7 @@ public class TurretCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    SmartDashboard.putNumber("target y angle", targetYAngle / Math.PI * 180);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -73,6 +75,7 @@ public class TurretCommand extends CommandBase {
     }
     Robot.turretSubsystem.getForwardLimitSwitchY();
     Robot.turretSubsystem.getReverseLimitSwitchY();
+    targetYAngle = SmartDashboard.getNumber("target y angle", targetYAngle / Math.PI * 180) * Math.PI / 180;
   }
 
   // Called once the command ends or is interrupted.
