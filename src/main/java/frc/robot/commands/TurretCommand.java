@@ -23,7 +23,7 @@ public class TurretCommand extends CommandBase {
   private double gainY = 2.5;
   private double maxSpeedY = 0.5;
 
-  private double gainX = 0.25;
+  private double gainX = 0.15;
   private double maxSpeedX = 1;
   private double defaultXSpeed = 0.5;
   public TurretCommand() {
