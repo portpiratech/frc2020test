@@ -19,7 +19,7 @@ public class TurretCommand extends CommandBase {
   private boolean init = true;
   private double initSpeedY = 0.2;
 
-  private double targetYAngle = 0;
+  // private double targetYAngle = 0;
   private double gainY = 2.5;
   private double maxSpeedY = 0.5;
 
@@ -34,7 +34,7 @@ public class TurretCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    SmartDashboard.putNumber("target y angle", targetYAngle / Math.PI * 180);
+    // SmartDashboard.putNumber("target y angle", targetYAngle / Math.PI * 180);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -62,6 +62,22 @@ public class TurretCommand extends CommandBase {
         }else{
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
+
+        double targetYAngle = Robot.cameraSubsystem.getTargetAngle();
+        SmartDashboard.putNumber("targetAngle", targetYAngle);
+        double turnSpeedY = (targetYAngle - Robot.turretSubsystem.getYAngle()) * gainY;
+        if(turnSpeedY > maxSpeedY){
+          turnSpeedY = maxSpeedY;
+        }else if(turnSpeedY < -maxSpeedY){
+          turnSpeedY = -maxSpeedY;
+        }
+        if(turnSpeedY > 0 && Robot.turretSubsystem.getForwardLimitSwitchY() == 1){
+          Robot.turretSubsystem.setYMotor(0);
+        }else if(turnSpeedY < 0 && Robot.turretSubsystem.getReverseLimitSwitchY() == 1){
+          Robot.turretSubsystem.setYMotor(0);
+        }else{
+          Robot.turretSubsystem.setYMotor(turnSpeedY);
+        }
       }else{
         Robot.turretSubsystem.setXMotor(defaultXSpeed);
       }
@@ -71,22 +87,9 @@ public class TurretCommand extends CommandBase {
       if(defaultXSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0){
         defaultXSpeed = -defaultXSpeed;
       }
-      double turnSpeedY = (targetYAngle - Robot.turretSubsystem.getYAngle()) * gainY;
-      if(turnSpeedY > maxSpeedY){
-        turnSpeedY = maxSpeedY;
-      }else if(turnSpeedY < -maxSpeedY){
-        turnSpeedY = -maxSpeedY;
-      }
-      if(turnSpeedY > 0 && Robot.turretSubsystem.getForwardLimitSwitchY() == 1){
-        Robot.turretSubsystem.setYMotor(0);
-      }else if(turnSpeedY < 0 && Robot.turretSubsystem.getReverseLimitSwitchY() == 1){
-        Robot.turretSubsystem.setYMotor(0);
-      }else{
-        Robot.turretSubsystem.setYMotor(turnSpeedY);
-      }
       Robot.turretSubsystem.getForwardLimitSwitchY();
       Robot.turretSubsystem.getReverseLimitSwitchY();
-      targetYAngle = SmartDashboard.getNumber("target y angle", targetYAngle / Math.PI * 180) * Math.PI / 180;
+      // targetYAngle = SmartDashboard.getNumber("target y angle", targetYAngle / Math.PI * 180) * Math.PI / 180;
     }
     if(OI.xButtonDriver.get()){
       init = true;

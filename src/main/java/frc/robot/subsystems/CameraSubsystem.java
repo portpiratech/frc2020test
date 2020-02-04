@@ -26,9 +26,8 @@ public class CameraSubsystem extends SubsystemBase {
 
     NetworkTable table;
     private double cameraAngle = 0;
-    private double targetHeight = 57/12.0;
-    private double cameraHeight = 26/12.0;
-    private double cameraOffset = 0.3;
+    private double targetHeight = 2.49555;
+    private double cameraHeight = 1.1811;
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
@@ -75,15 +74,13 @@ public class CameraSubsystem extends SubsystemBase {
     public double getDistance(){
         double angle = Math.toRadians(cameraAngle + getYAngle());
         double heightChange = targetHeight - cameraHeight;
-        double distance = (heightChange / (Math.tan(angle))) + cameraOffset;
+        double distance = (heightChange / (Math.tan(angle)));
         SmartDashboard.putNumber("Distance", distance);
         return distance;
     }
 
     public double getTargetAngle(){
-        double height = targetHeight - cameraHeight;
-        double b = Math.acos((((9.8 * Math.pow(getDistance(), 2)) / Math.pow(RobotMap.velocity, 2)) + height)/(Math.sqrt(Math.pow(height, 2) + Math.pow(getDistance(), 2))));
-        return (b + Math.atan(getDistance()/height))/2;
+        return Math.atan((targetHeight - cameraHeight + 0.254) / (getDistance() + 0.6731));
     }
 
     public double getTargetAngle2(){
