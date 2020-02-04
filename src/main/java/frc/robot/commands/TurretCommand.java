@@ -20,7 +20,7 @@ public class TurretCommand extends CommandBase {
   private double initSpeedY = 0.2;
 
   // private double targetYAngle = 0;
-  private double gainY = 2.5;
+  private double gainY = 1.5;
   private double maxSpeedY = 0.5;
 
   private double gainX = 0.15;
@@ -64,13 +64,15 @@ public class TurretCommand extends CommandBase {
         }
 
         double targetYAngle = Robot.cameraSubsystem.getTargetAngle();
+        SmartDashboard.putNumber("angle Y", Robot.turretSubsystem.getYAngle());
         SmartDashboard.putNumber("targetAngle", targetYAngle);
-        double turnSpeedY = (targetYAngle - Robot.turretSubsystem.getYAngle()) * gainY;
+        double turnSpeedY = (-Robot.turretSubsystem.getYAngle() - targetYAngle) * gainY;
         if(turnSpeedY > maxSpeedY){
           turnSpeedY = maxSpeedY;
         }else if(turnSpeedY < -maxSpeedY){
           turnSpeedY = -maxSpeedY;
         }
+        SmartDashboard.putNumber("Turn Speed Y", turnSpeedY);
         if(turnSpeedY > 0 && Robot.turretSubsystem.getForwardLimitSwitchY() == 1){
           Robot.turretSubsystem.setYMotor(0);
         }else if(turnSpeedY < 0 && Robot.turretSubsystem.getReverseLimitSwitchY() == 1){
