@@ -47,7 +47,7 @@ public class TurretCommand extends CommandBase {
         init = false;
       }
     }else{
-      if(Robot.cameraSubsystem.hasTarget() > 0.5){
+      if(Robot.cameraSubsystem.hasTarget()){
         double turnSpeedX = Robot.cameraSubsystem.getXAngle() * gainX;
         if(turnSpeedX > maxSpeedX){
           turnSpeedX = maxSpeedX;

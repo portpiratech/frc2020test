@@ -54,10 +54,10 @@ public class CameraSubsystem extends SubsystemBase {
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
     }
 
-    public double hasTarget(){
-        NetworkTableEntry tv = table.getEntry("tv");
-        double v = tv.getDouble(0.0);
-        return v;
+    public boolean hasTarget(){
+        NetworkTableEntry ta = table.getEntry("ta");
+        double a = ta.getDouble(0.0);
+        return a >= 0.1;
     }
 
     public double getXAngle(){
@@ -91,6 +91,10 @@ public class CameraSubsystem extends SubsystemBase {
         double v = RobotMap.velocity;
         double h = targetHeight - cameraHeight;
         double a = 0.5 * -9.8 * (Math.pow(d, 2) / Math.pow(v, 2));
-        return (-d + Math.sqrt(Math.pow(d, 2) - 4 * (a) * (a - h)))/(2 * a);
+        double ans1 = Math.atan((-d + Math.sqrt(Math.pow(d, 2) - 4 * (a) * (a - h)))/(2 * a));
+        double ans2 = Math.atan((-d - Math.sqrt(Math.pow(d, 2) - 4 * (a) * (a - h)))/(2 * a));
+        SmartDashboard.putNumber("Target angle 1", ans1);
+        SmartDashboard.putNumber("Target angle 2", ans2);
+        return ans1;
     }
 }
