@@ -87,8 +87,8 @@ public class CameraSubsystem extends SubsystemBase {
         double d = getDistance();
         double v = RobotMap.velocity;
         double h = targetHeight - cameraHeight;
-        double a = 0.5 * -9.8 * (Math.pow(d, 2) / Math.pow(v, 2));
-        double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) - 4 * (a) * (a - h)))/(2 * a));
+        double w = (-9.8*Math.pow(d, 2))/Math.pow(v, 2);
+        double ans = Math.atan((-d+Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2)))/w);
         SmartDashboard.putNumber("Target angle 1", ans);
         return ans;
     }
