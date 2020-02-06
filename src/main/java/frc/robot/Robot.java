@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
-import frc.robot.subsystems.ToggleDriveModeSubsystem;
 import frc.robot.subsystems.TurretSubsystem;
 import frc.robot.commands.AccelerometerCommand;
 import frc.robot.commands.CameraCommand;
@@ -38,19 +37,12 @@ import frc.robot.subsystems.ColorSensorSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DriveMode driveMode;
-	
-	public static enum DriveMode {
-		TankDrive,
-		ArcadeDrive
-  }
   
 
   public static OI m_oi;
 
   public static final SolenoidSubsystem solenoid = new SolenoidSubsystem();
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
-  public static ToggleDriveModeSubsystem toggleDriveMode = new ToggleDriveModeSubsystem();
   public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
   public static CameraSubsystem cameraSubsystem = new CameraSubsystem();
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
@@ -69,7 +61,6 @@ public class Robot extends TimedRobot {
     UsbCamera cam;
     m_oi = new OI();
     // chooser.addObject("My Auto", new MyAutoCommand());
-    Robot.driveMode = Robot.DriveMode.TankDrive;
     cam = CameraServer.getInstance().startAutomaticCapture();
     cam.setResolution(240, 220);
     cam.setFPS(25);

@@ -15,7 +15,7 @@ public class ToggleDriveModeCommand extends CommandBase {
 	
   public ToggleDriveModeCommand() {
       // Use requires() here to declare subsystem dependencies
-      addRequirements(Robot.toggleDriveMode);
+      addRequirements(Robot.driveTrainSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class ToggleDriveModeCommand extends CommandBase {
 
   // Called repeatedly when this Command is scheduled to run
   public void execute() {
-    Robot.toggleDriveMode.toggleDriveMode();
+    Robot.driveTrainSubsystem.toggleDriveMode();
   }
 
   // Make this return true when this Command no longer needs to run execute()

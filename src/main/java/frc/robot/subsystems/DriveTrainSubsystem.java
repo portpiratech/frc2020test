@@ -90,5 +90,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void toggleDriveMode(){
     arcade = !arcade;
   }
+
+  public void set(double left, double right){
+    leftMotor1.set(left);
+    leftMotor2.set(left);
+    rightMotor1.set(-right);
+    rightMotor2.set(-right);
+  }
 }
 
