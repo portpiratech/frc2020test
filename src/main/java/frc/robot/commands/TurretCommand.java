@@ -63,7 +63,7 @@ public class TurretCommand extends CommandBase {
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
 
-        double targetYAngle = Robot.cameraSubsystem.getTargetAngle();
+        double targetYAngle = Robot.cameraSubsystem.getTargetAngle2();
         SmartDashboard.putNumber("angle Y", Robot.turretSubsystem.getYAngle());
         SmartDashboard.putNumber("targetAngle", targetYAngle);
         double turnSpeedY = (-Robot.turretSubsystem.getYAngle() - targetYAngle) * gainY;
