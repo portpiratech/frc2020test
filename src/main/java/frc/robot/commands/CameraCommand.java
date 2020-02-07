@@ -7,7 +7,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.Robot;
 
 public class CameraCommand extends CommandBase {
@@ -26,6 +28,16 @@ public class CameraCommand extends CommandBase {
     Robot.cameraSubsystem.outputToSmartDashboard();
     Robot.cameraSubsystem.getDistance();
     Robot.cameraSubsystem.getTargetAngle2();
+    if(OI.driverController.getPOV() > 180){
+      OI.operatorController.setRumble(RumbleType.kLeftRumble, 1);
+    }else{
+      OI.operatorController.setRumble(RumbleType.kLeftRumble, 0);
+    }
+    if(OI.operatorController.getPOV() > 180){
+      OI.driverController.setRumble(RumbleType.kLeftRumble, 1);
+    }else{
+      OI.driverController.setRumble(RumbleType.kLeftRumble, 0);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
