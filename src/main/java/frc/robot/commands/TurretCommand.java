@@ -16,6 +16,8 @@ public class TurretCommand extends CommandBase {
   /**
    * Creates a new AimTurretCommand.
    */
+  private boolean lastPressed = false;
+  private boolean highGoal = true;
   private boolean init = true;
   private double initSpeedY = 0.2;
 
@@ -62,8 +64,12 @@ public class TurretCommand extends CommandBase {
         }else{
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
-
-        double targetYAngle = Robot.cameraSubsystem.getTargetAngle2();
+        double targetYAngle;
+        if(highGoal){
+          targetYAngle = Robot.cameraSubsystem.getTargetAngle2();
+        }else{
+          targetYAngle = 0;
+        }
         SmartDashboard.putNumber("angle Y", Robot.turretSubsystem.getYAngle());
         SmartDashboard.putNumber("targetAngle", targetYAngle);
         double turnSpeedY = (-Robot.turretSubsystem.getYAngle() - targetYAngle) * gainY;
@@ -98,6 +104,10 @@ public class TurretCommand extends CommandBase {
     if(OI.xButtonDriver.get()){
       init = true;
     }
+    if(!lastPressed && OI.backButtonOperator.get()){
+      highGoal = !highGoal;
+    }
+    lastPressed = OI.backButtonOperator.get();
   }
 
   // Called once the command ends or is interrupted.
