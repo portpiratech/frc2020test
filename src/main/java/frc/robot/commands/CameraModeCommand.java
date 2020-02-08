@@ -14,7 +14,7 @@ public class CameraModeCommand extends CommandBase {
   /**
    * Creates a new CameraModeCommand.
    */
-  private boolean isProcessing = false;
+  private boolean isProcessing = true;
   public CameraModeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
