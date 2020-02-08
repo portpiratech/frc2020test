@@ -28,6 +28,7 @@ import frc.robot.commands.PUOBCommand;
 import frc.robot.commands.TurretCommand;
 import frc.robot.subsystems.AccelerometerSubsystem;
 import frc.robot.subsystems.CameraSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.PUOBSubsystem;
 
@@ -51,6 +52,7 @@ public class Robot extends TimedRobot {
   public static AccelerometerSubsystem accelerometerSubsystem = new AccelerometerSubsystem();
   public static TurretSubsystem turretSubsystem = new TurretSubsystem();
   public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
+  public static ClimberSubsystem climberSubsystem = new ClimberSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

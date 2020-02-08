@@ -70,4 +70,6 @@ public class RobotMap {
   public static double velocity = 13.4;
 
   public static int PUOBMotorID = 9;
+
+  public static int climbMotorID = 3766;
 }
