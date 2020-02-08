@@ -24,10 +24,12 @@ import frc.robot.commands.CameraCommand;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.GyroCommand;
+import frc.robot.commands.PUOBCommand;
 import frc.robot.commands.TurretCommand;
 import frc.robot.subsystems.AccelerometerSubsystem;
 import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
+import frc.robot.subsystems.PUOBSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
   public static AccelerometerSubsystem accelerometerSubsystem = new AccelerometerSubsystem();
   public static TurretSubsystem turretSubsystem = new TurretSubsystem();
+  public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -71,6 +74,7 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().setDefaultCommand(accelerometerSubsystem, new AccelerometerCommand());
     // CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new TheCrmounch());
     CommandScheduler.getInstance().setDefaultCommand(turretSubsystem, new TurretCommand());
+    CommandScheduler.getInstance().setDefaultCommand(PUOBSubsystem, new PUOBCommand());
     
     
     //CameraServer.getInstance().startAutomaticCapture();
