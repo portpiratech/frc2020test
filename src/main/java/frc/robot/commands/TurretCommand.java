@@ -101,13 +101,13 @@ public class TurretCommand extends CommandBase {
       Robot.turretSubsystem.getReverseLimitSwitchY();
       // targetYAngle = SmartDashboard.getNumber("target y angle", targetYAngle / Math.PI * 180) * Math.PI / 180;
     }
-    if(OI.xButtonDriver.get()){
+    if(OI.startButtonOperator.get()){
       init = true;
     }
-    if(!lastPressed && OI.backButtonOperator.get()){
+    if(!lastPressed && OI.leftBumperOperator.get()){
       highGoal = !highGoal;
     }
-    lastPressed = OI.backButtonOperator.get();
+    lastPressed = OI.leftBumperOperator.get();
   }
 
   // Called once the command ends or is interrupted.

@@ -86,6 +86,6 @@ public class OI {
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
-    yButtonDriver.whenPressed(new CameraModeCommand());
+    rightBumperOperator.whenPressed(new CameraModeCommand());
   }
 }

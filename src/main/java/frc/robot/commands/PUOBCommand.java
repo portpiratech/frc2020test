@@ -29,9 +29,9 @@ public class PUOBCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(OI.aButtonDriver.get()){
+    if(OI.bButtonOperator.get()){
       Robot.PUOBSubsystem.turn(speed);
-    }else if(OI.bButtonDriver.get()){
+    }else if(OI.backButtonOperator.get()){
       Robot.PUOBSubsystem.turn(-speed);
     }else{
       Robot.PUOBSubsystem.turn(0);
