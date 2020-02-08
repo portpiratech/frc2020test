@@ -24,6 +24,7 @@ import frc.robot.RobotMap;
 
 public class CameraSubsystem extends SubsystemBase {
 
+    private boolean isProcessing = true;
     NetworkTable table;
     private double cameraAngle = 0;
     private double targetHeight = 2.49555;
@@ -49,8 +50,21 @@ public class CameraSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Percentage of target", area);
     }
 
+    public void switchCamMode(){
+        if(isProcessing){
+            setCamMode(1);
+        }else{
+            setCamMode(0);
+        }
+        isProcessing = !isProcessing;
+    }
+
     public void setCamMode(int mode){
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
+    }
+
+    public boolean getCamMode(){
+        return isProcessing;
     }
 
     public boolean hasTarget(){

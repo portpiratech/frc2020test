@@ -80,8 +80,10 @@ public class TurretCommand extends CommandBase {
         }else{
           Robot.turretSubsystem.setYMotor(turnSpeedY);
         }
-      }else{
+      }else if(Robot.cameraSubsystem.getCamMode()){
         Robot.turretSubsystem.setXMotor(defaultXSpeed);
+      }else{
+        Robot.turretSubsystem.setXMotor(0);
       }
       if(defaultXSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0){
         defaultXSpeed = -defaultXSpeed;

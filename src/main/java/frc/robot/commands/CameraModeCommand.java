@@ -14,7 +14,7 @@ public class CameraModeCommand extends CommandBase {
   /**
    * Creates a new CameraModeCommand.
    */
-  private boolean isProcessing = true;
+  
   public CameraModeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -22,12 +22,7 @@ public class CameraModeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if(isProcessing){
-      Robot.cameraSubsystem.setCamMode(1);
-    }else{
-      Robot.cameraSubsystem.setCamMode(0);
-    }
-    isProcessing = !isProcessing;
+    Robot.cameraSubsystem.switchCamMode();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
