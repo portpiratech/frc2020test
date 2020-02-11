@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -18,17 +20,21 @@ public class ClimberSubsystem extends SubsystemBase {
    * Creates a new ClimberSubsystem.
    */
   private double speed = 0.3;
-  private CANSparkMax motor;
+  private TalonSRX motor;
+  // private CANSparkMax motor;
   public ClimberSubsystem() {
-    motor = new CANSparkMax(RobotMap.climbMotorID, MotorType.kBrushless);
+    // motor = new CANSparkMax(RobotMap.climbMotorID, MotorType.kBrushless);
+    motor = new TalonSRX(RobotMap.climbMotorID);
   }
 
   public void stop(){
-    motor.set(0);
+    motor.set(ControlMode.PercentOutput, 0);
+    // motor.set(0);
   }
 
   public void turn(){
-    motor.set(speed);
+    motor.set(ControlMode.PercentOutput, speed);
+    // motor.set(speed);
   }
 
   public void switchDirection(){

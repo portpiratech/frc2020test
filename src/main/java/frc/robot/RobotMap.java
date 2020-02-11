@@ -31,7 +31,7 @@ public class RobotMap {
   public static int leftSparkMaxID2 = 4;
   public static int rightSparkMaxID2 = 6;
   public static int leftMotorID = 33;//9;
-  public static int rightMotorID = 12;
+  public static int rightMotorID = 4798367;//12;
 
   public static double throttleTolerance = 0.08;
   //public static int greenWheelMotorID = 3; 
@@ -71,5 +71,5 @@ public class RobotMap {
 
   public static int PUOBMotorID = 9;
 
-  public static int climbMotorID = 3766;
+  public static int climbMotorID = 12;
 }
