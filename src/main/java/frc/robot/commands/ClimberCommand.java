@@ -15,6 +15,8 @@ public class ClimberCommand extends CommandBase {
   /**
    * Creates a new ClimberCommand.
    */
+  private boolean up = true;
+  private double speed = 0.5;
   public ClimberCommand() {
     addRequirements(Robot.climberSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -28,14 +30,18 @@ public class ClimberCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.climberSubsystem.turn();
+    if(up){
+      Robot.climberSubsystem.turn(speed);
+    }else{
+      Robot.climberSubsystem.turn(-speed);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.climberSubsystem.stop();
-    Robot.climberSubsystem.switchDirection();
+    Robot.climberSubsystem.turn(0);
+    up = !up;
   }
 
   // Returns true when the command should end.

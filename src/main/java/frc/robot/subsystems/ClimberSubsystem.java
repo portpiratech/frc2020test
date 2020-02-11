@@ -19,7 +19,6 @@ public class ClimberSubsystem extends SubsystemBase {
   /**
    * Creates a new ClimberSubsystem.
    */
-  private double speed = 0.3;
   private TalonSRX motor;
   // private CANSparkMax motor;
   public ClimberSubsystem() {
@@ -27,17 +26,8 @@ public class ClimberSubsystem extends SubsystemBase {
     motor = new TalonSRX(RobotMap.climbMotorID);
   }
 
-  public void stop(){
-    motor.set(ControlMode.PercentOutput, 0);
-    // motor.set(0);
-  }
-
-  public void turn(){
+  public void turn(double speed){
     motor.set(ControlMode.PercentOutput, speed);
     // motor.set(speed);
-  }
-
-  public void switchDirection(){
-    speed = -speed;
   }
 }
