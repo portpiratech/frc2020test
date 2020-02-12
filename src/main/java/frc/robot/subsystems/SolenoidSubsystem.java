@@ -14,11 +14,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class SolenoidSubsystem extends SubsystemBase {
 	
 	private DoubleSolenoid cannonSolenoid;
-	public double firingDelay = 0.5;
 	
 	public SolenoidSubsystem() {
 		super();
-		cannonSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.solenoid2_port1, RobotMap.solenoid1_port2); //PCM ID 1, Solenoid ports 1,2
+		cannonSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1, RobotMap.shifterSolenoidPort2);
 	}
 
 /*

@@ -16,13 +16,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.OI;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
+  private double deadband = 0.05;
+  private boolean arcade = false;
   private TalonSRX leftMotor;
   private TalonSRX rightMotor;
   private CANSparkMax leftMotor2;
@@ -48,7 +49,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void drive(){  
       double leftSpeed, rightSpeed;
     	
-    	if(Robot.driveMode == Robot.DriveMode.ArcadeDrive)
+    	if(arcade)//Robot.driveMode == Robot.DriveMode.ArcadeDrive)
     	{
         //arcade drive
     		double turnValue = OI.driverController.getX(Hand.kLeft);
@@ -68,19 +69,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
         	leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
         	rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
       }
-      /*
-      if(Robot.twoSpeed == Robot.TwoSpeed.SecondDrive)
-    	{
-        
-    	}
-    	else
-    	{
-        
-      }*/
-      if(Math.abs(leftSpeed) <= RobotMap.deadband){
+      if(Math.abs(leftSpeed) <= deadband){
         leftSpeed = 0;
       }
-      if(Math.abs(rightSpeed) <= RobotMap.deadband){
+      if(Math.abs(rightSpeed) <= deadband){
         rightSpeed = 0;
       }
       //leftMotor.setInverted(true);
@@ -93,6 +85,17 @@ public class DriveTrainSubsystem extends SubsystemBase {
       rightMotor2.set(-rightSpeed);
       SmartDashboard.putNumber("Left speed", leftSpeed);
       SmartDashboard.putNumber("Right speed", rightSpeed);
+  }
+
+  public void toggleDriveMode(){
+    arcade = !arcade;
+  }
+
+  public void set(double left, double right){
+    leftMotor1.set(left);
+    leftMotor2.set(left);
+    rightMotor1.set(-right);
+    rightMotor2.set(-right);
   }
 }
 

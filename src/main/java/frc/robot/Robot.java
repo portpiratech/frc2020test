@@ -16,11 +16,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
-import frc.robot.subsystems.ToggleDriveModeSubsystem;
+import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.commands.AccelerometerCommand;
+import frc.robot.commands.CameraCommand;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.GyroCommand;
+import frc.robot.commands.PUOBCommand;
+import frc.robot.commands.TurretCommand;
+import frc.robot.subsystems.AccelerometerSubsystem;
+import frc.robot.subsystems.CameraSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
+import frc.robot.subsystems.PUOBSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,20 +41,20 @@ import frc.robot.subsystems.ColorSensorSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DriveMode driveMode;
-	
-	public static enum DriveMode {
-		TankDrive,
-		ArcadeDrive
-  }
   
 
   public static OI m_oi;
 
   public static final SolenoidSubsystem solenoid = new SolenoidSubsystem();
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
-  public static ToggleDriveModeSubsystem toggleDriveMode = new ToggleDriveModeSubsystem();
   public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
+  public static CameraSubsystem cameraSubsystem = new CameraSubsystem();
+  public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
+  public static AccelerometerSubsystem accelerometerSubsystem = new AccelerometerSubsystem();
+  public static TurretSubsystem turretSubsystem = new TurretSubsystem();
+  public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
+  public static ClimberSubsystem climberSubsystem = new ClimberSubsystem();
+  public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -57,12 +68,18 @@ public class Robot extends TimedRobot {
     UsbCamera cam;
     m_oi = new OI();
     // chooser.addObject("My Auto", new MyAutoCommand());
-    Robot.driveMode = Robot.DriveMode.TankDrive;
     cam = CameraServer.getInstance().startAutomaticCapture();
     cam.setResolution(240, 220);
     cam.setFPS(25);
     CommandScheduler.getInstance().setDefaultCommand(colorSensorSubsystem, new ColorSensorCommand());
     CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new DriveCommand());
+    CommandScheduler.getInstance().setDefaultCommand(cameraSubsystem, new CameraCommand());
+    CommandScheduler.getInstance().setDefaultCommand(gyroSubsystem, new GyroCommand());
+    CommandScheduler.getInstance().setDefaultCommand(accelerometerSubsystem, new AccelerometerCommand());
+    // CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new TheCrmounch());
+    CommandScheduler.getInstance().setDefaultCommand(turretSubsystem, new TurretCommand());
+    CommandScheduler.getInstance().setDefaultCommand(PUOBSubsystem, new PUOBCommand());
+    
     
     //CameraServer.getInstance().startAutomaticCapture();
   }

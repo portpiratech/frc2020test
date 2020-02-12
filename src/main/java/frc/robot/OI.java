@@ -9,7 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.CameraModeCommand;
+import frc.robot.commands.ClimberCommand;
 import frc.robot.commands.PistonCommand;
+import frc.robot.commands.ShooterMotorCommand;
+import frc.robot.commands.ShooterPistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -57,7 +61,9 @@ public class OI {
   public static JoystickButton leftBumperOperator;
   public static JoystickButton rightBumperOperator;
   public static JoystickButton aButtonDriver;
-	public static JoystickButton bButtonDriver;
+  public static JoystickButton bButtonDriver;
+  public static JoystickButton xButtonDriver;
+  public static JoystickButton startButtonDriver;
 	
 	public OI() {
 		driverController = new XboxController(RobotMap.driverControllerId);
@@ -77,8 +83,15 @@ public class OI {
     rightBumperOperator = new JoystickButton(operatorController, 6);
     aButtonDriver = new JoystickButton(driverController, 1);
     bButtonDriver = new JoystickButton(driverController, 2);
+    xButtonDriver = new JoystickButton(driverController, 3);
+    startButtonDriver = new JoystickButton(driverController, 8);
 
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
+
+    rightBumperOperator.whenPressed(new CameraModeCommand());
+    xButtonOperator.whenPressed(new ClimberCommand());
+    aButtonOperator.whenPressed(new ShooterMotorCommand());
+    yButtonOperator.whenPressed(new ShooterPistonCommand());
   }
 }
