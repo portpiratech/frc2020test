@@ -13,6 +13,7 @@ import frc.robot.commands.CameraModeCommand;
 import frc.robot.commands.ClimberCommand;
 import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ShooterMotorCommand;
+import frc.robot.commands.ShooterPistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -91,5 +92,6 @@ public class OI {
     rightBumperOperator.whenPressed(new CameraModeCommand());
     xButtonOperator.whenPressed(new ClimberCommand());
     aButtonOperator.whenPressed(new ShooterMotorCommand());
+    yButtonOperator.whenPressed(new ShooterPistonCommand());
   }
 }

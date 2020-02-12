@@ -35,8 +35,8 @@ public class RobotMap {
   public static int rightMotorID = 4798367;//12;
 
   public static final int PCM_ID = 1; //Compressor/Pneumatics Control Module (used for DoubleSolenoids)
-  public static int shifterSolenoidPort1 = 2; //DoubleSolenoid
-	public static int shifterSolenoidPort2 = 1; //DoubleSolenoid
+  public static int shifterSolenoidPort1 = 3; //DoubleSolenoid
+	public static int shifterSolenoidPort2 = 4; //DoubleSolenoid
   
   public static int turretXMotorID = 10;
   public static int turretYMotorID = 11;
@@ -46,7 +46,7 @@ public class RobotMap {
 
   public static int climbMotorID = 34;
 
-  public static int SPIFFYSolenoidPort1 = 3;
-  public static int SPIFFYSolenoidPort2 = 4;
+  public static int SPIFFYSolenoidPort1 = 2;
+  public static int SPIFFYSolenoidPort2 = 1;
   public static int SPIFFYMotorID = 12;
 }
