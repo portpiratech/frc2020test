@@ -31,6 +31,7 @@ import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.PUOBSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -53,6 +54,7 @@ public class Robot extends TimedRobot {
   public static TurretSubsystem turretSubsystem = new TurretSubsystem();
   public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
   public static ClimberSubsystem climberSubsystem = new ClimberSubsystem();
+  public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

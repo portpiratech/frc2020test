@@ -25,6 +25,7 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+  public static double driveSpeedMultiplier = 0.6;
   public static double deadband = 0.05;
   public static int leftSparkMaxID1 = 3;
   public static int rightSparkMaxID1 = 5;
@@ -33,37 +34,9 @@ public class RobotMap {
   public static int leftMotorID = 33;//9;
   public static int rightMotorID = 4798367;//12;
 
-  public static double throttleTolerance = 0.08;
-  //public static int greenWheelMotorID = 3; 
- 
-  public static double driveSpeedMultiplier = 0.8;
-  public static double liftSpeed = 0.6;
-  public static double backLiftSpeed = 0.6;
-  public static double lifterSpeedMultiplier = 0.6;
-  public static int lifterDriveId = 2; 
-  public static int grabberId = 1;
-  public static int grabberEncoderId = 3;
-	//Grabber
-	public static int grabberMaxCurrent = 5;
-	public static double grabSpeed = 0.7;
-	public static double holdSpeed = 0.0;
-  public static double ungrabSpeed = 0.9;
-  //Screw Lift
-  public static int liftMotor1ID = 3;
-  public static int liftMotor2ID = 6;
-  public static int liftDriveMotor1ID = 7;
-  public static int liftDriveMotor2ID = 8;
-  public static int liftStopper = 0;
-  public static double liftDriveSpeedMultiplier = 1;
-  //public static int topSwitch = 0;
-  public static double frontLiftMotorMulti = 1;
-  public static double backLiftMotorMulti = 0.8;
-  //Encoder
-  public static int Encoder1ID = 197;
-
   public static final int PCM_ID = 1; //Compressor/Pneumatics Control Module (used for DoubleSolenoids)
-	public static int solenoid_port2 = 1; //DoubleSolenoid
-	public static int solenoid_port1 = 2; //DoubleSolenoid
+  public static int shifterSolenoidPort1 = 2; //DoubleSolenoid
+	public static int shifterSolenoidPort2 = 1; //DoubleSolenoid
   
   public static int turretXMotorID = 10;
   public static int turretYMotorID = 11;
@@ -72,4 +45,8 @@ public class RobotMap {
   public static int PUOBMotorID = 9;
 
   public static int climbMotorID = 12;
+
+  public static int SPIFFYSolenoidPort1 = 3;
+  public static int SPIFFYSolenoidPort2 = 4;
+  public static int SPIFFYMotorID = 12;
 }
