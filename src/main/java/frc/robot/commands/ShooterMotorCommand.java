@@ -25,16 +25,16 @@ public class ShooterMotorCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if(spin){
-      Robot.shooterSubsystem.turn(speed);
-    }else{
-      Robot.shooterSubsystem.turn(0);
-    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if(spin){
+      Robot.shooterSubsystem.turn(speed);
+    }else{
+      Robot.shooterSubsystem.turn(0);
+    }
   }
 
   // Called once the command ends or is interrupted.
