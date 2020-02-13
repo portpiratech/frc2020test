@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -54,6 +55,8 @@ public class Robot extends TimedRobot {
   public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
   public static ClimberSubsystem climberSubsystem = new ClimberSubsystem();
   public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  private long timeLastShot;
+  private static final long shootingTimeInterval = 1000;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -125,7 +128,11 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-
+    timeLastShot = 0;
+    Robot.shooterSubsystem.startMotor();
+    Robot.driveTrainSubsystem.set(-0.3, -0.3);
+    Timer.delay(3);
+    Robot.driveTrainSubsystem.set(0, 0);
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
      * switch(autoSelected) { case "My Auto": autonomousCommand = new
@@ -145,6 +152,9 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     CommandScheduler.getInstance().run();
+    if ((System.currentTimeMillis() - timeLastShot) > shootingTimeInterval && Robot.shooterSubsystem.shoot()) {
+      timeLastShot = System.currentTimeMillis();
+    }
   }
 
   @Override

@@ -11,8 +11,10 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ShooterSubsystem extends SubsystemBase {
@@ -57,5 +59,19 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public boolean isMotorOn() {
     return isMotorOn;
+  }
+
+  public boolean shoot(){
+    if (Robot.shooterSubsystem.isMotorOn()
+      && Robot.cameraSubsystem.hasTarget()
+      && Robot.cameraSubsystem.shotViable()
+    ) {
+      Robot.shooterSubsystem.retractLauncher();
+      Timer.delay(1);
+      Robot.shooterSubsystem.extendLauncher();
+      return true;
+    }else{
+      return false;
+    }
   }
 }

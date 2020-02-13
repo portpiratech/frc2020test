@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.Timer;
 
 public class ShooterPistonCommand extends CommandBase {
   /**
@@ -27,14 +26,7 @@ public class ShooterPistonCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Robot.shooterSubsystem.isMotorOn()
-      && Robot.cameraSubsystem.hasTarget()
-      && Robot.cameraSubsystem.shotViable()
-    ) {
-      Robot.shooterSubsystem.retractLauncher();
-      Timer.delay(1);
-      Robot.shooterSubsystem.extendLauncher();
-    }
+    Robot.shooterSubsystem.shoot();
   }
 
   // Called once the command ends or is interrupted.
