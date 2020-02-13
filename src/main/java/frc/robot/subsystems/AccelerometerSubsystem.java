@@ -16,11 +16,12 @@ public class AccelerometerSubsystem extends SubsystemBase {
    * Creates a new AccelerometerSubsystem.
    */
   BuiltInAccelerometer accelerometer;
+
   public AccelerometerSubsystem() {
     accelerometer = new BuiltInAccelerometer();
   }
 
-  public void readAccelerometer(){
+  public void readAccelerometer() {
     double x = accelerometer.getX();
     double y = accelerometer.getY();
     double z = accelerometer.getZ();

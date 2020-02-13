@@ -15,7 +15,7 @@ package frc.robot;
  */
 public class RobotMap {
   public static int driverControllerId = 0;
-	public static int operatorControllerId = 1;
+  public static int operatorControllerId = 1;
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
@@ -31,13 +31,13 @@ public class RobotMap {
   public static int rightSparkMaxID1 = 5;
   public static int leftSparkMaxID2 = 4;
   public static int rightSparkMaxID2 = 6;
-  public static int leftMotorID = 33;//9;
-  public static int rightMotorID = 4798367;//12;
+  public static int leftMotorID = 33;// 9;
+  public static int rightMotorID = 4798367;// 12;
 
-  public static final int PCM_ID = 1; //Compressor/Pneumatics Control Module (used for DoubleSolenoids)
-  public static int shifterSolenoidPort1 = 3; //DoubleSolenoid
-	public static int shifterSolenoidPort2 = 4; //DoubleSolenoid
-  
+  public static final int PCM_ID = 1; // Compressor/Pneumatics Control Module (used for DoubleSolenoids)
+  public static int shifterSolenoidPort1 = 3; // DoubleSolenoid
+  public static int shifterSolenoidPort2 = 4; // DoubleSolenoid
+
   public static int turretXMotorID = 10;
   public static int turretYMotorID = 11;
   public static double velocity = 13.4;

@@ -15,6 +15,7 @@ import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ShooterMotorCommand;
 import frc.robot.commands.ShooterPistonCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -52,32 +53,32 @@ public class OI {
   public static JoystickButton backButtonDriver;
   public static JoystickButton yButtonDriver;
   public static JoystickButton rightBumperDriver;
-	public static JoystickButton yButtonOperator;
-	public static JoystickButton xButtonOperator;
-	public static JoystickButton aButtonOperator;
-	public static JoystickButton bButtonOperator;
-	public static JoystickButton backButtonOperator;
-	public static JoystickButton startButtonOperator;
+  public static JoystickButton yButtonOperator;
+  public static JoystickButton xButtonOperator;
+  public static JoystickButton aButtonOperator;
+  public static JoystickButton bButtonOperator;
+  public static JoystickButton backButtonOperator;
+  public static JoystickButton startButtonOperator;
   public static JoystickButton leftBumperOperator;
   public static JoystickButton rightBumperOperator;
   public static JoystickButton aButtonDriver;
   public static JoystickButton bButtonDriver;
   public static JoystickButton xButtonDriver;
   public static JoystickButton startButtonDriver;
-	
-	public OI() {
-		driverController = new XboxController(RobotMap.driverControllerId);
-		operatorController = new XboxController(RobotMap.operatorControllerId);
-		
-		//name buttons to include which controller
+
+  public OI() {
+    driverController = new XboxController(RobotMap.driverControllerId);
+    operatorController = new XboxController(RobotMap.operatorControllerId);
+
+    // name buttons to include which controller
     backButtonDriver = new JoystickButton(driverController, 7);
     yButtonDriver = new JoystickButton(driverController, 4);
     rightBumperDriver = new JoystickButton(driverController, 6);
-		yButtonOperator = new JoystickButton(operatorController, 4);
-		xButtonOperator = new JoystickButton(operatorController, 3);
-		aButtonOperator = new JoystickButton(operatorController, 1);
-		bButtonOperator = new JoystickButton(operatorController, 2);
-		backButtonOperator = new JoystickButton(operatorController, 7);
+    yButtonOperator = new JoystickButton(operatorController, 4);
+    xButtonOperator = new JoystickButton(operatorController, 3);
+    aButtonOperator = new JoystickButton(operatorController, 1);
+    bButtonOperator = new JoystickButton(operatorController, 2);
+    backButtonOperator = new JoystickButton(operatorController, 7);
     startButtonOperator = new JoystickButton(operatorController, 8);
     leftBumperOperator = new JoystickButton(operatorController, 5);
     rightBumperOperator = new JoystickButton(operatorController, 6);

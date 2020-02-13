@@ -10,7 +10,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-
 public class ShooterMotorCommand extends CommandBase {
   /**
    * Creates a new ShooterMotorCommand.
@@ -27,9 +26,9 @@ public class ShooterMotorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.shooterSubsystem.isMotorOn()){
+    if (Robot.shooterSubsystem.isMotorOn()) {
       Robot.shooterSubsystem.startMotor();
-    }else{
+    } else {
       Robot.shooterSubsystem.stopMotor();
     }
   }

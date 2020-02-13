@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class DriveCommand extends CommandBase {
-  //double leftSpeed;
-  //double rightSpeed;
+  // double leftSpeed;
+  // double rightSpeed;
 
   public DriveCommand() {
     addRequirements(Robot.driveTrainSubsystem);
   }
-// Called just before this Command runs the first time
+
+  // Called just before this Command runs the first time
   @Override
   public void initialize() {
   }
@@ -37,14 +38,14 @@ public class DriveCommand extends CommandBase {
   // Called once after isFinished returns true
   @Override
   public void end(boolean interrupted) {
-    
-  }
-/*
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  public void interrupted() {
 
   }
-  */
+  /*
+   * // Called when another command which requires one or more of the same //
+   * subsystems is scheduled to run
+   * 
+   * @Override public void interrupted() {
+   * 
+   * }
+   */
 }

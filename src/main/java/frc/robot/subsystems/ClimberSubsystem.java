@@ -20,13 +20,14 @@ public class ClimberSubsystem extends SubsystemBase {
    * Creates a new ClimberSubsystem.
    */
   private TalonSRX motor;
+
   // private CANSparkMax motor;
   public ClimberSubsystem() {
     // motor = new CANSparkMax(RobotMap.climbMotorID, MotorType.kBrushless);
     motor = new TalonSRX(RobotMap.climbMotorID);
   }
 
-  public void turn(double speed){
+  public void turn(double speed) {
     motor.set(ControlMode.PercentOutput, speed);
     // motor.set(speed);
   }

@@ -21,7 +21,6 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 
-
 public class CameraSubsystem extends SubsystemBase {
 
     private boolean isProcessing = true;
@@ -29,6 +28,7 @@ public class CameraSubsystem extends SubsystemBase {
     private double cameraAngle = 0;
     private double targetHeight = 2.49555;
     private double cameraHeight = 1.1811;
+
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
@@ -50,42 +50,42 @@ public class CameraSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Percentage of target", area);
     }
 
-    public void switchCamMode(){
-        if(isProcessing){
+    public void switchCamMode() {
+        if (isProcessing) {
             setCamMode(1);
-        }else{
+        } else {
             setCamMode(0);
         }
         isProcessing = !isProcessing;
     }
 
-    public void setCamMode(int mode){
+    public void setCamMode(int mode) {
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
     }
 
-    public boolean getCamMode(){
+    public boolean getCamMode() {
         return isProcessing;
     }
 
-    public boolean hasTarget(){
+    public boolean hasTarget() {
         NetworkTableEntry ta = table.getEntry("ta");
         double a = ta.getDouble(0.0);
         return a >= 0.1;
     }
 
-    public double getXAngle(){
+    public double getXAngle() {
         NetworkTableEntry tx = table.getEntry("tx");
         double x = tx.getDouble(0.0);
         return x;
     }
 
-    public double getYAngle(){
+    public double getYAngle() {
         NetworkTableEntry ty = table.getEntry("ty");
         double y = ty.getDouble(0.0);
         return y;
     }
 
-    public double getDistance(){
+    public double getDistance() {
         double angle = Math.toRadians(cameraAngle + getYAngle());
         double heightChange = targetHeight - cameraHeight;
         double distance = (heightChange / (Math.tan(angle)));
@@ -93,16 +93,16 @@ public class CameraSubsystem extends SubsystemBase {
         return distance;
     }
 
-    public double getTargetAngle(){
+    public double getTargetAngle() {
         return Math.atan((targetHeight - cameraHeight + 0.254) / (getDistance() + 0.6731));
     }
 
-    public double getTargetAngle2(){
+    public double getTargetAngle2() {
         double d = getDistance();
         double v = RobotMap.velocity;
         double h = targetHeight - cameraHeight;
-        double w = (-9.8*Math.pow(d, 2))/Math.pow(v, 2);
-        double ans = Math.atan((-d+Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2)))/w);
+        double w = (-9.8 * Math.pow(d, 2)) / Math.pow(v, 2);
+        double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2))) / w);
         SmartDashboard.putNumber("Target angle 1", ans);
         return ans;
     }

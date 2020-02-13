@@ -17,6 +17,7 @@ public class PistonCommand extends CommandBase {
    */
   private boolean extended = false;
   private boolean finished = false;
+
   public PistonCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -29,12 +30,12 @@ public class PistonCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(extended){
+    if (extended) {
       Robot.solenoid.retractLauncher();
-    	//Timer.delay(0.5);
-    }else{
+      // Timer.delay(0.5);
+    } else {
       Robot.solenoid.extendLauncher();
-    	//Timer.delay(1.0);
+      // Timer.delay(1.0);
     }
     extended = !extended;
     finished = true;

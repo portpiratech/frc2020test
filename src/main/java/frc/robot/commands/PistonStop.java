@@ -12,7 +12,7 @@ public class PistonStop extends CommandBase {
     public PistonStop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	addRequirements(Robot.solenoid);
+        addRequirements(Robot.solenoid);
     }
 
     // Called just before this Command runs the first time

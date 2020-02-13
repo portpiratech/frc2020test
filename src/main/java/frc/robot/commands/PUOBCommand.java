@@ -16,6 +16,7 @@ public class PUOBCommand extends CommandBase {
    * Creates a new PUOBCommand.
    */
   private double speed = 0.3;
+
   public PUOBCommand() {
     addRequirements(Robot.PUOBSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,11 +30,11 @@ public class PUOBCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(OI.bButtonOperator.get()){
+    if (OI.bButtonOperator.get()) {
       Robot.PUOBSubsystem.turn(speed);
-    }else if(OI.backButtonOperator.get()){
+    } else if (OI.backButtonOperator.get()) {
       Robot.PUOBSubsystem.turn(-speed);
-    }else{
+    } else {
       Robot.PUOBSubsystem.turn(0);
     }
   }

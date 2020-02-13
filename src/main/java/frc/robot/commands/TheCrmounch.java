@@ -33,28 +33,28 @@ public class TheCrmounch extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.cameraSubsystem.hasTarget()){
+    if (Robot.cameraSubsystem.hasTarget()) {
       double turnSpeed = Robot.cameraSubsystem.getXAngle() * gainX;
-      if(turnSpeed > maxSpeedturn){
+      if (turnSpeed > maxSpeedturn) {
         turnSpeed = maxSpeedturn;
       }
-      if(turnSpeed < -maxSpeedturn){
+      if (turnSpeed < -maxSpeedturn) {
         turnSpeed = -maxSpeedturn;
       }
       double left = -turnSpeed;
       double right = turnSpeed;
       double distance = Robot.cameraSubsystem.getDistance();
       double distanceSpeed = (distance - minDistance) * gainDist;
-      if(distanceSpeed > maxSpeedDist){
+      if (distanceSpeed > maxSpeedDist) {
         distanceSpeed = maxSpeedDist;
       }
-      if(distanceSpeed < -maxSpeedDist){
+      if (distanceSpeed < -maxSpeedDist) {
         distanceSpeed = -maxSpeedDist;
       }
       left += distanceSpeed;
       right += distanceSpeed;
       Robot.driveTrainSubsystem.set(left, right);
-    }else{
+    } else {
       Robot.driveTrainSubsystem.set(-0.01, -0.01);
     }
   }

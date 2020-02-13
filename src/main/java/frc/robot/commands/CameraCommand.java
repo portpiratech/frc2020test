@@ -28,16 +28,14 @@ public class CameraCommand extends CommandBase {
     Robot.cameraSubsystem.outputToSmartDashboard();
     Robot.cameraSubsystem.getDistance();
     Robot.cameraSubsystem.getTargetAngle2();
-    /*if(OI.driverController.getPOV() > -1){
-      OI.operatorController.setRumble(RumbleType.kLeftRumble, 1);
-    }else{
-      OI.operatorController.setRumble(RumbleType.kLeftRumble, 0);
-    }
-    if(OI.operatorController.getPOV() > -1){
-      OI.driverController.setRumble(RumbleType.kLeftRumble, 1);
-    }else{
-      OI.driverController.setRumble(RumbleType.kLeftRumble, 0);
-    }*/
+    /*
+     * if(OI.driverController.getPOV() > -1){
+     * OI.operatorController.setRumble(RumbleType.kLeftRumble, 1); }else{
+     * OI.operatorController.setRumble(RumbleType.kLeftRumble, 0); }
+     * if(OI.operatorController.getPOV() > -1){
+     * OI.driverController.setRumble(RumbleType.kLeftRumble, 1); }else{
+     * OI.driverController.setRumble(RumbleType.kLeftRumble, 0); }
+     */
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.util.Color;
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
+
 /**
  * Add your docs here.
  */
@@ -26,28 +27,26 @@ public class ColorSensorSubsystem extends SubsystemBase {
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
 
   /**
-   * A Rev Color Sensor V3 object is constructed with an I2C port as a 
-   * parameter. The device will be automatically initialized with default 
-   * parameters.
+   * A Rev Color Sensor V3 object is constructed with an I2C port as a parameter.
+   * The device will be automatically initialized with default parameters.
    */
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
   /**
-   * A Rev Color Match object is used to register and detect known colors. This can 
-   * be calibrated ahead of time or during operation.
+   * A Rev Color Match object is used to register and detect known colors. This
+   * can be calibrated ahead of time or during operation.
    * 
    * This object uses a simple euclidian distance to estimate the closest match
    * with given confidence range.
    */
   private final ColorMatch m_colorMatcher = new ColorMatch();
 
-
   private final Color kBlueTarget = ColorMatch.makeColor(0.17, 0.45, 0.38);
   private final Color kGreenTarget = ColorMatch.makeColor(0.22, 0.56, 0.22);
   private final Color kRedTarget = ColorMatch.makeColor(0.64, 0.29, 0.07);
   private final Color kYellowTarget = ColorMatch.makeColor(0.39, 0.51, 0.10);
 
-  public void getColors(){
+  public void getColors() {
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
@@ -74,8 +73,7 @@ public class ColorSensorSubsystem extends SubsystemBase {
     }
 
     /**
-     * Open Smart Dashboard or Shuffleboard to see the color detected by the 
-     * sensor.
+     * Open Smart Dashboard or Shuffleboard to see the color detected by the sensor.
      */
     SmartDashboard.putNumber("Red", detectedColor.red);
     SmartDashboard.putNumber("Green", detectedColor.green);

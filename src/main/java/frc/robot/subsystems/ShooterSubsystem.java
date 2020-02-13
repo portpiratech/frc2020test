@@ -43,19 +43,19 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   // public void turn(double speed) {
-  //   motor.set(ControlMode.PercentOutput, speed);
+  // motor.set(ControlMode.PercentOutput, speed);
 
   public void startMotor() {
     motor.set(ControlMode.PercentOutput, speed);
     isMotorOn = true;
   }
 
-  public void stopMotor(){
+  public void stopMotor() {
     motor.set(ControlMode.PercentOutput, 0);
     isMotorOn = false;
   }
 
-  public boolean isMotorOn(){
+  public boolean isMotorOn() {
     return isMotorOn;
   }
 }

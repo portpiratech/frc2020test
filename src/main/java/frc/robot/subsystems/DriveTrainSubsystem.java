@@ -30,72 +30,69 @@ public class DriveTrainSubsystem extends SubsystemBase {
   private CANSparkMax rightMotor2;
   private CANSparkMax leftMotor1;
   private CANSparkMax rightMotor1;
-  public DriveTrainSubsystem(){
-      leftMotor =  new TalonSRX(RobotMap.leftMotorID);
-      rightMotor =  new TalonSRX(RobotMap.rightMotorID);
-      leftMotor1 = new CANSparkMax(RobotMap.leftSparkMaxID1, MotorType.kBrushless);
-      rightMotor1 = new CANSparkMax(RobotMap.rightSparkMaxID1, MotorType.kBrushless);
-      leftMotor2 = new CANSparkMax(RobotMap.leftSparkMaxID2, MotorType.kBrushless);
-      rightMotor2 = new CANSparkMax(RobotMap.rightSparkMaxID2, MotorType.kBrushless);
-  }
-  /*
-  //@Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new DriveCommand());
-  }
-*/
-  public void drive(){  
-      double leftSpeed, rightSpeed;
-    	
-    	if(arcade)//Robot.driveMode == Robot.DriveMode.ArcadeDrive)
-    	{
-        //arcade drive
-    		double turnValue = OI.driverController.getX(Hand.kLeft);
-        double throttleValue = OI.driverController.getY(Hand.kLeft);
-        	
-        	leftSpeed = ((turnValue-throttleValue)*RobotMap.driveSpeedMultiplier);
-        	rightSpeed = ((turnValue+throttleValue)*RobotMap.driveSpeedMultiplier);
-    	}
-    	else
-    	{
-        //tank drive
-    		double leftY = -OI.driverController.getY(Hand.kLeft);
-        double rightY = OI.driverController.getY(Hand.kRight);
-       /*if(leftY - rightY <= RobotMap.throttleTolerance || rightY - leftY <= RobotMap.throttleTolerance){
-          leftY = rightY;
-        }*/
-        	leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
-        	rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
-      }
-      if(Math.abs(leftSpeed) <= deadband){
-        leftSpeed = 0;
-      }
-      if(Math.abs(rightSpeed) <= deadband){
-        rightSpeed = 0;
-      }
-      //leftMotor.setInverted(true);
-      leftMotor.set(ControlMode.PercentOutput, leftSpeed);
-      rightMotor.set(ControlMode.PercentOutput, rightSpeed);    	
-      //press right bumper for halfspeed
-      leftMotor1.set(-leftSpeed);
-      leftMotor2.set(-leftSpeed);
-      rightMotor1.set(-rightSpeed);
-      rightMotor2.set(-rightSpeed);
-      SmartDashboard.putNumber("Left speed", leftSpeed);
-      SmartDashboard.putNumber("Right speed", rightSpeed);
+
+  public DriveTrainSubsystem() {
+    leftMotor = new TalonSRX(RobotMap.leftMotorID);
+    rightMotor = new TalonSRX(RobotMap.rightMotorID);
+    leftMotor1 = new CANSparkMax(RobotMap.leftSparkMaxID1, MotorType.kBrushless);
+    rightMotor1 = new CANSparkMax(RobotMap.rightSparkMaxID1, MotorType.kBrushless);
+    leftMotor2 = new CANSparkMax(RobotMap.leftSparkMaxID2, MotorType.kBrushless);
+    rightMotor2 = new CANSparkMax(RobotMap.rightSparkMaxID2, MotorType.kBrushless);
   }
 
-  public void toggleDriveMode(){
+  /*
+   * //@Override public void initDefaultCommand() { // Set the default command for
+   * a subsystem here. // setDefaultCommand(new MySpecialCommand());
+   * setDefaultCommand(new DriveCommand()); }
+   */
+  public void drive() {
+    double leftSpeed, rightSpeed;
+
+    if (arcade)// Robot.driveMode == Robot.DriveMode.ArcadeDrive)
+    {
+      // arcade drive
+      double turnValue = OI.driverController.getX(Hand.kLeft);
+      double throttleValue = OI.driverController.getY(Hand.kLeft);
+
+      leftSpeed = ((turnValue - throttleValue) * RobotMap.driveSpeedMultiplier);
+      rightSpeed = ((turnValue + throttleValue) * RobotMap.driveSpeedMultiplier);
+    } else {
+      // tank drive
+      double leftY = -OI.driverController.getY(Hand.kLeft);
+      double rightY = OI.driverController.getY(Hand.kRight);
+      /*
+       * if(leftY - rightY <= RobotMap.throttleTolerance || rightY - leftY <=
+       * RobotMap.throttleTolerance){ leftY = rightY; }
+       */
+      leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
+      rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
+    }
+    if (Math.abs(leftSpeed) <= deadband) {
+      leftSpeed = 0;
+    }
+    if (Math.abs(rightSpeed) <= deadband) {
+      rightSpeed = 0;
+    }
+    // leftMotor.setInverted(true);
+    leftMotor.set(ControlMode.PercentOutput, leftSpeed);
+    rightMotor.set(ControlMode.PercentOutput, rightSpeed);
+    // press right bumper for halfspeed
+    leftMotor1.set(-leftSpeed);
+    leftMotor2.set(-leftSpeed);
+    rightMotor1.set(-rightSpeed);
+    rightMotor2.set(-rightSpeed);
+    SmartDashboard.putNumber("Left speed", leftSpeed);
+    SmartDashboard.putNumber("Right speed", rightSpeed);
+  }
+
+  public void toggleDriveMode() {
     arcade = !arcade;
   }
 
-  public void set(double left, double right){
+  public void set(double left, double right) {
     leftMotor1.set(left);
     leftMotor2.set(left);
     rightMotor1.set(-right);
     rightMotor2.set(-right);
   }
 }
-

@@ -28,6 +28,7 @@ public class TurretCommand extends CommandBase {
   private double gainX = 0.15;
   private double maxSpeedX = 1;
   private double defaultXSpeed = 0.5;
+
   public TurretCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.turretSubsystem);
@@ -42,69 +43,70 @@ public class TurretCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(init){
+    if (init) {
       Robot.turretSubsystem.setYMotor(initSpeedY);
-      if(Robot.turretSubsystem.getForwardLimitSwitchY() == 1){
+      if (Robot.turretSubsystem.getForwardLimitSwitchY() == 1) {
         Robot.turretSubsystem.resetEncoder();
         init = false;
       }
-    }else{
-      if(Robot.cameraSubsystem.hasTarget()){
+    } else {
+      if (Robot.cameraSubsystem.hasTarget()) {
         double turnSpeedX = Robot.cameraSubsystem.getXAngle() * gainX;
-        if(turnSpeedX > maxSpeedX){
+        if (turnSpeedX > maxSpeedX) {
           turnSpeedX = maxSpeedX;
         }
-        if(turnSpeedX < -maxSpeedX){
+        if (turnSpeedX < -maxSpeedX) {
           turnSpeedX = -maxSpeedX;
         }
-        if(turnSpeedX > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0){
+        if (turnSpeedX > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0) {
           Robot.turretSubsystem.setXMotor(0);
-        }else if(turnSpeedX < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0){
+        } else if (turnSpeedX < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0) {
           Robot.turretSubsystem.setXMotor(0);
-        }else{
+        } else {
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
         double targetYAngle;
-        if(highGoal){
+        if (highGoal) {
           targetYAngle = Robot.cameraSubsystem.getTargetAngle2();
-        }else{
+        } else {
           targetYAngle = 0;
         }
         SmartDashboard.putNumber("angle Y", Robot.turretSubsystem.getYAngle());
         SmartDashboard.putNumber("targetAngle", targetYAngle);
         double turnSpeedY = (-Robot.turretSubsystem.getYAngle() - targetYAngle) * gainY;
-        if(turnSpeedY > maxSpeedY){
+        if (turnSpeedY > maxSpeedY) {
           turnSpeedY = maxSpeedY;
-        }else if(turnSpeedY < -maxSpeedY){
+        } else if (turnSpeedY < -maxSpeedY) {
           turnSpeedY = -maxSpeedY;
         }
         SmartDashboard.putNumber("Turn Speed Y", turnSpeedY);
-        if(turnSpeedY > 0 && Robot.turretSubsystem.getForwardLimitSwitchY() == 1){
+        if (turnSpeedY > 0 && Robot.turretSubsystem.getForwardLimitSwitchY() == 1) {
           Robot.turretSubsystem.setYMotor(0);
-        }else if(turnSpeedY < 0 && Robot.turretSubsystem.getReverseLimitSwitchY() == 1){
+        } else if (turnSpeedY < 0 && Robot.turretSubsystem.getReverseLimitSwitchY() == 1) {
           Robot.turretSubsystem.setYMotor(0);
-        }else{
+        } else {
           Robot.turretSubsystem.setYMotor(turnSpeedY);
         }
-      }else if(Robot.cameraSubsystem.getCamMode()){
+      } else if (Robot.cameraSubsystem.getCamMode()) {
         Robot.turretSubsystem.setXMotor(defaultXSpeed);
-      }else{
+      } else {
         Robot.turretSubsystem.setXMotor(0);
       }
-      if(defaultXSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0){
+      if (defaultXSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0) {
         defaultXSpeed = -defaultXSpeed;
       }
-      if(defaultXSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0){
+      if (defaultXSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0) {
         defaultXSpeed = -defaultXSpeed;
       }
       Robot.turretSubsystem.getForwardLimitSwitchY();
       Robot.turretSubsystem.getReverseLimitSwitchY();
-      // targetYAngle = SmartDashboard.getNumber("target y angle", targetYAngle / Math.PI * 180) * Math.PI / 180;
+      // targetYAngle = SmartDashboard.getNumber("target y angle", targetYAngle /
+      // Math.PI * 180) * Math.PI / 180;
     }
-    if(OI.startButtonOperator.get()){
+    if (OI.startButtonOperator.get()) {
       init = true;
     }
-    if(!lastPressed && OI.leftBumperOperator.get()){
+    if (!lastPressed && OI.leftBumperOperator.get()) {
       highGoal = !highGoal;
     }
     lastPressed = OI.leftBumperOperator.get();

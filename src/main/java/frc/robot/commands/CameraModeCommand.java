@@ -14,7 +14,7 @@ public class CameraModeCommand extends CommandBase {
   /**
    * Creates a new CameraModeCommand.
    */
-  
+
   public CameraModeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }

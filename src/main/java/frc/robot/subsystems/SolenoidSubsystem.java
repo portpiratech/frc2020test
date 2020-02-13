@@ -6,56 +6,48 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-
 /**
- * The Piston subsystem incorporates two solenoids wired to the
- * pneumatics control module (PCM).
+ * The Piston subsystem incorporates two solenoids wired to the pneumatics
+ * control module (PCM).
  */
 public class SolenoidSubsystem extends SubsystemBase {
-	
+
 	private DoubleSolenoid cannonSolenoid;
-	
+
 	public SolenoidSubsystem() {
 		super();
-		cannonSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1, RobotMap.shifterSolenoidPort2);
+		cannonSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1,
+				RobotMap.shifterSolenoidPort2);
 	}
 
-/*
-	public void initDefaultCommand() {
-		//setDefaultCommand(new *);
-		setDefaultCommand(new PistonStop());
-	}
-*/
+	/*
+	 * public void initDefaultCommand() { //setDefaultCommand(new *);
+	 * setDefaultCommand(new PistonStop()); }
+	 */
 	/**
 	 * The log method puts interesting information to the SmartDashboard.
 	 */
 	public void log() {
 	}
-	
+
 	// Cannon solenoid (Launcher)
 	public void extendLauncher() {
 		cannonSolenoid.set(Value.kForward);
 	}
-	
-	public void retractLauncher(){
+
+	public void retractLauncher() {
 		cannonSolenoid.set(Value.kReverse);
 	}
-	
+
 	public void stopLauncher() {
 		cannonSolenoid.set(Value.kOff);
 	}
-	
-	/* last year's code
-	public void extendArms() {
-		solenoid2.set(Value.kForward);
-	}
-	
-	public void retractArms() {
-		solenoid2.set(Value.kReverse);
-	}
-	
-	public void stopArms() {
-		solenoid2.set(Value.kOff);
-	}
-	*/
+
+	/*
+	 * last year's code public void extendArms() { solenoid2.set(Value.kForward); }
+	 * 
+	 * public void retractArms() { solenoid2.set(Value.kReverse); }
+	 * 
+	 * public void stopArms() { solenoid2.set(Value.kOff); }
+	 */
 }

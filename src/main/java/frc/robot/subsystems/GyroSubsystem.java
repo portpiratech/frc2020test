@@ -16,11 +16,12 @@ public class GyroSubsystem extends SubsystemBase {
    * Creates a new GyroSubsystem.
    */
   ADXRS450_Gyro gyro;
+
   public GyroSubsystem() {
     gyro = new ADXRS450_Gyro();
   }
 
-  public void readGyro(){
+  public void readGyro() {
     double angle = gyro.getAngle();
     double rate = gyro.getRate();
     SmartDashboard.putNumber("angle", angle);
