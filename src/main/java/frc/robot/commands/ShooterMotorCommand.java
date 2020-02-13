@@ -15,8 +15,6 @@ public class ShooterMotorCommand extends CommandBase {
   /**
    * Creates a new ShooterMotorCommand.
    */
-  private double speed = 0.3;
-  private boolean spin = true;
   public ShooterMotorCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -29,17 +27,16 @@ public class ShooterMotorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(spin){
-      Robot.shooterSubsystem.turn(speed);
+    if(Robot.shooterSubsystem.isMotorOn()){
+      Robot.shooterSubsystem.startMotor();
     }else{
-      Robot.shooterSubsystem.turn(0);
+      Robot.shooterSubsystem.stopMotor();
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    spin = !spin;
   }
 
   // Returns true when the command should end.

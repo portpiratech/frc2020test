@@ -21,10 +21,13 @@ public class ShooterSubsystem extends SubsystemBase {
    */
   private DoubleSolenoid piston;
   private TalonSRX motor;
+  private boolean isMotorOn;
+  private double speed = 0.3;
 
   public ShooterSubsystem() {
     piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
     motor = new TalonSRX(RobotMap.SPIFFYMotorID);
+    isMotorOn = false;
   }
 
   public void extendLauncher() {
@@ -39,7 +42,20 @@ public class ShooterSubsystem extends SubsystemBase {
     piston.set(Value.kOff);
   }
 
-  public void turn(double speed) {
+  // public void turn(double speed) {
+  //   motor.set(ControlMode.PercentOutput, speed);
+
+  public void startMotor() {
     motor.set(ControlMode.PercentOutput, speed);
+    isMotorOn = true;
+  }
+
+  public void stopMotor(){
+    motor.set(ControlMode.PercentOutput, 0);
+    isMotorOn = false;
+  }
+
+  public boolean isMotorOn(){
+    return isMotorOn;
   }
 }
