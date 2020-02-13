@@ -27,7 +27,10 @@ public class ShooterPistonCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Robot.shooterSubsystem.isMotorOn() && Robot.cameraSubsystem.hasTarget()) {
+    if (Robot.shooterSubsystem.isMotorOn()
+      && Robot.cameraSubsystem.hasTarget()
+      && Robot.cameraSubsystem.shotViable()
+    ) {
       Robot.shooterSubsystem.retractLauncher();
       Timer.delay(1);
       Robot.shooterSubsystem.extendLauncher();

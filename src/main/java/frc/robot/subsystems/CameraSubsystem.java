@@ -23,6 +23,8 @@ import frc.robot.RobotMap;
 
 public class CameraSubsystem extends SubsystemBase {
 
+    private double minAngle = 0;
+    private double maxAngle = Math.PI / 2;
     private boolean isProcessing = true;
     NetworkTable table;
     private double cameraAngle = 0;
@@ -103,7 +105,12 @@ public class CameraSubsystem extends SubsystemBase {
         double h = targetHeight - cameraHeight;
         double w = (-9.8 * Math.pow(d, 2)) / Math.pow(v, 2);
         double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2))) / w);
-        SmartDashboard.putNumber("Target angle 1", ans);
+        SmartDashboard.putNumber("Target angle", ans);
         return ans;
+    }
+
+    public boolean shotViable() {
+        return hasTarget() && !Double.isNaN(getTargetAngle2()) && getTargetAngle2() > minAngle
+                && getTargetAngle2() < maxAngle;
     }
 }
