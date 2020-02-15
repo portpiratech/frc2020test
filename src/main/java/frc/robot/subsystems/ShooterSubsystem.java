@@ -7,8 +7,10 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+// import com.ctre.phoenix.motorcontrol.ControlMode;
+// import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
@@ -22,13 +24,17 @@ public class ShooterSubsystem extends SubsystemBase {
    * Creates a new ShooterSubsystem.
    */
   private DoubleSolenoid piston;
-  private TalonSRX motor;
+  // private TalonSRX motor;
+  private CANSparkMax leftMotor;
+  private CANSparkMax rightMotor;
   private boolean isMotorOn;
   private double speed = 0.3;
 
   public ShooterSubsystem() {
     piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
-    motor = new TalonSRX(RobotMap.SPIFFYMotorID);
+    // motor = new TalonSRX(RobotMap.SPIFFYMotorID);
+    leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
+    rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
     isMotorOn = false;
   }
 
@@ -48,12 +54,16 @@ public class ShooterSubsystem extends SubsystemBase {
   // motor.set(ControlMode.PercentOutput, speed);
 
   public void startMotor() {
-    motor.set(ControlMode.PercentOutput, speed);
+    // motor.set(ControlMode.PercentOutput, speed);
+    leftMotor.set(speed);
+    rightMotor.set(-speed);
     isMotorOn = true;
   }
 
   public void stopMotor() {
-    motor.set(ControlMode.PercentOutput, 0);
+    // motor.set(ControlMode.PercentOutput, 0);
+    leftMotor.set(0);
+    rightMotor.set(0);
     isMotorOn = false;
   }
 
