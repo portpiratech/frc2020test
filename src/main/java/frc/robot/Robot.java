@@ -127,6 +127,7 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
     timeLastShot = 0;
+    Robot.PUOBSubsystem.motorOn();
     Robot.shooterSubsystem.startMotor();
     Robot.driveTrainSubsystem.set(-0.3, -0.3);
     Timer.delay(3);
