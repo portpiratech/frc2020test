@@ -15,6 +15,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
@@ -101,7 +102,12 @@ public class CameraSubsystem extends SubsystemBase {
         double w = (-9.8 * Math.pow(d, 2)) / Math.pow(v, 2);
         double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2))) / w);
         SmartDashboard.putNumber("Target angle", ans);
-        return ans;
+        if(Robot.turretSubsystem.isHighGoal()){
+            return ans;
+        }else{
+            return 0;
+        }
+        
     }
 
     public boolean shotViable() {

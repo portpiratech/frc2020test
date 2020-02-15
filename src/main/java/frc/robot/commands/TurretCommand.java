@@ -64,11 +64,7 @@ public class TurretCommand extends CommandBase {
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
         double targetYAngle;
-        if (Robot.turretSubsystem.isHighGoal()) {
-          targetYAngle = Robot.cameraSubsystem.getTargetAngle();
-        } else {
-          targetYAngle = 0;
-        }
+        targetYAngle = Robot.cameraSubsystem.getTargetAngle();
         if(targetYAngle > Robot.cameraSubsystem.getMaxAngle()){
           targetYAngle = Robot.cameraSubsystem.getMaxAngle();
         }
