@@ -23,9 +23,9 @@ import frc.robot.RobotMap;
 
 public class CameraSubsystem extends SubsystemBase {
 
+    private double angleRange = 0.5;
     private double minAngle = 0;
     private double maxAngle = Math.PI / 2;
-    private boolean isProcessing = true;
     NetworkTable table;
     private double cameraAngle = 0;
     private double targetHeight = 2.49555;
@@ -35,11 +35,11 @@ public class CameraSubsystem extends SubsystemBase {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
 
-    public double getMinAngle(){
+    public double getMinAngle() {
         return minAngle;
     }
 
-    public double getMaxAngle(){
+    public double getMaxAngle() {
         return maxAngle;
     }
 
@@ -60,21 +60,8 @@ public class CameraSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Percentage of target", area);
     }
 
-    public void switchCamMode() {
-        if (isProcessing) {
-            setCamMode(1);
-        } else {
-            setCamMode(0);
-        }
-        isProcessing = !isProcessing;
-    }
-
     public void setCamMode(int mode) {
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
-    }
-
-    public boolean getCamMode() {
-        return isProcessing;
     }
 
     public boolean hasTarget() {
@@ -118,7 +105,8 @@ public class CameraSubsystem extends SubsystemBase {
     }
 
     public boolean shotViable() {
-        return hasTarget() && !Double.isNaN(getTargetAngle2()) && getTargetAngle2() > minAngle
-                && getTargetAngle2() < maxAngle;
+        return hasTarget() && !Double.isNaN(getTargetAngle2()) && getTargetAngle2() >= minAngle
+                && getTargetAngle2() <= maxAngle && getYAngle() > getTargetAngle2() - angleRange
+                && getYAngle() < getTargetAngle2() + angleRange;
     }
 }
