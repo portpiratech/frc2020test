@@ -27,6 +27,7 @@ public class GyroCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // Reads the gyro on roborio
     Robot.gyroSubsystem.readGyro();
   }
 

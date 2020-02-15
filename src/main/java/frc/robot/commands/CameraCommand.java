@@ -25,9 +25,13 @@ public class CameraCommand extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
+    // outputs values obtained from the camera
     Robot.cameraSubsystem.outputToSmartDashboard();
+    // outputs distance calculation
     Robot.cameraSubsystem.getDistance();
+    // outputs angle calculation
     Robot.cameraSubsystem.getTargetAngle();
+    // played with making the controller rumble
     /*
      * if(OI.driverController.getPOV() > -1){
      * OI.operatorController.setRumble(RumbleType.kLeftRumble, 1); }else{

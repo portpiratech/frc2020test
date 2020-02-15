@@ -25,6 +25,7 @@ public class ColorSensorCommand extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
+    // reads colors from the color sensor
     Robot.colorSensorSubsystem.getColors();
   }
 

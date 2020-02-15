@@ -37,40 +37,37 @@ public class ShooterSubsystem extends SubsystemBase {
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
     isMotorOn = false;
   }
-
+  // Extends the piston.
   public void extendLauncher() {
     piston.set(Value.kForward);
   }
-
+  // Retracts the piston.
   public void retractLauncher() {
     piston.set(Value.kReverse);
   }
-
+  // Stops the piston.
   public void stopLauncher() {
     piston.set(Value.kOff);
   }
-
-  // public void turn(double speed) {
-  // motor.set(ControlMode.PercentOutput, speed);
-
+  // Turns the motor on.
   public void startMotor() {
     // motor.set(ControlMode.PercentOutput, speed);
     leftMotor.set(speed);
     rightMotor.set(-speed);
     isMotorOn = true;
   }
-
+  // Stops the motor.
   public void stopMotor() {
     // motor.set(ControlMode.PercentOutput, 0);
     leftMotor.set(0);
     rightMotor.set(0);
     isMotorOn = false;
   }
-
+  // Returns if the motor is on.
   public boolean isMotorOn() {
     return isMotorOn;
   }
-
+  // Shoots the ball and returns if it succeeded.
   public boolean shoot(){
     if (Robot.shooterSubsystem.isMotorOn()
       && Robot.cameraSubsystem.hasTarget()

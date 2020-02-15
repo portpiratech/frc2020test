@@ -35,15 +35,15 @@ public class CameraSubsystem extends SubsystemBase {
     public CameraSubsystem() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
-
+    // Returns minAngle.
     public double getMinAngle() {
         return minAngle;
     }
-
+    // Returns maxAngle.
     public double getMaxAngle() {
         return maxAngle;
     }
-
+    // Prints camera values.
     public void outputToSmartDashboard() {
         NetworkTableEntry tv = table.getEntry("tv");
         NetworkTableEntry tx = table.getEntry("tx");
@@ -60,29 +60,29 @@ public class CameraSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Degrees from target (Y)", y);
         SmartDashboard.putNumber("Percentage of target", area);
     }
-
+    // Sets camera mode.
     public void setCamMode(int mode) {
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode);
     }
-
+    // Checks if the camera has a target.
     public boolean hasTarget() {
         NetworkTableEntry ta = table.getEntry("ta");
         double a = ta.getDouble(0.0);
         return a >= 0.1;
     }
-
+    // Returns the angle from the center of the camera to the center of the target.
     public double getXAngle() {
         NetworkTableEntry tx = table.getEntry("tx");
         double x = tx.getDouble(0.0);
         return x;
     }
-
+    // Returns the angle from the center of the camera to the top of the target.
     public double getYAngle() {
         NetworkTableEntry ty = table.getEntry("ty");
         double y = ty.getDouble(0.0);
         return y;
     }
-
+    // Based on the angle finds the distance from the camera to the target.
     public double getDistance() {
         double angle = Math.toRadians(cameraAngle + getYAngle());
         double heightChange = targetHeight - cameraHeight;
@@ -90,11 +90,11 @@ public class CameraSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Distance", distance);
         return distance;
     }
-
+    // Test to point the shooter directly at the target.
     public double getTargetAngleTest() {
         return Math.atan((targetHeight - cameraHeight + 0.254) / (getDistance() + 0.6731));
     }
-
+    // Returns the target angle based on distance equations.
     public double getTargetAngle() {
         double d = getDistance();
         double v = RobotMap.velocity;
@@ -109,7 +109,7 @@ public class CameraSubsystem extends SubsystemBase {
         }
         
     }
-
+    // Returns whether or not the shot is viable.
     public boolean shotViable() {
         return hasTarget() && !Double.isNaN(getTargetAngle()) && getTargetAngle() >= minAngle
                 && getTargetAngle() <= maxAngle && getYAngle() > getTargetAngle() - angleRange

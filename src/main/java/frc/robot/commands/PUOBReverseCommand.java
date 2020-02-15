@@ -22,6 +22,7 @@ public class PUOBReverseCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // Reverses the PUOB while back is held down
     Robot.PUOBSubsystem.motorReverse();
   }
 

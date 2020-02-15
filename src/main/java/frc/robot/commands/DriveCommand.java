@@ -26,6 +26,7 @@ public class DriveCommand extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
+    // Robot moves using joysticks
     Robot.driveTrainSubsystem.drive();
   }
 

@@ -31,6 +31,7 @@ public class ClimberCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    //makes the motor spin forward until x is let go then the motor spins backward until x is let go
     if (up) {
       Robot.climberSubsystem.turn(speed);
     } else {

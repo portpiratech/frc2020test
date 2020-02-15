@@ -27,18 +27,19 @@ public class SolenoidSubsystem extends SubsystemBase {
 	/**
 	 * The log method puts interesting information to the SmartDashboard.
 	 */
-	public void log() {
-	}
+	// public void log() {
+	// }
 
 	// Cannon solenoid (Launcher)
+	// Extends the piston.
 	public void extendLauncher() {
 		cannonSolenoid.set(Value.kForward);
 	}
-
+	// Retracts the piston.
 	public void retractLauncher() {
 		cannonSolenoid.set(Value.kReverse);
 	}
-
+	// Stops the piston.
 	public void stopLauncher() {
 		cannonSolenoid.set(Value.kOff);
 	}

@@ -20,7 +20,7 @@ public class GyroSubsystem extends SubsystemBase {
   public GyroSubsystem() {
     gyro = new ADXRS450_Gyro();
   }
-
+  // reads the gyro on the roborio
   public void readGyro() {
     double angle = gyro.getAngle();
     double rate = gyro.getRate();

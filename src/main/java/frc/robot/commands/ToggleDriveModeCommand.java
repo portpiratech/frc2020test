@@ -24,6 +24,7 @@ public class ToggleDriveModeCommand extends CommandBase {
 
   // Called repeatedly when this Command is scheduled to run
   public void execute() {
+    // Toggles between tank and arcade drive.
     Robot.driveTrainSubsystem.toggleDriveMode();
   }
 

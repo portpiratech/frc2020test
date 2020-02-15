@@ -26,6 +26,7 @@ public class ShooterMotorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // turns the motor for shooting balls on and off
     if (Robot.shooterSubsystem.isMotorOn()) {
       Robot.shooterSubsystem.startMotor();
     } else {

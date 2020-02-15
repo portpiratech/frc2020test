@@ -47,6 +47,7 @@ public class ColorSensorSubsystem extends SubsystemBase {
   private final Color kYellowTarget = ColorMatch.makeColor(0.39, 0.51, 0.10);
 
   public void getColors() {
+    // Outputs colors.
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);

@@ -33,6 +33,7 @@ public class TheCrmounch extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // makes robot move to a certain distance from the target
     if (Robot.cameraSubsystem.hasTarget()) {
       double turnSpeed = Robot.cameraSubsystem.getXAngle() * gainX;
       if (turnSpeed > maxSpeedturn) {

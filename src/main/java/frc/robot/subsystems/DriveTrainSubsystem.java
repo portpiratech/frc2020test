@@ -45,6 +45,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
    * a subsystem here. // setDefaultCommand(new MySpecialCommand());
    * setDefaultCommand(new DriveCommand()); }
    */
+  // Moves drivebase.
   public void drive() {
     double leftSpeed, rightSpeed;
 
@@ -84,11 +85,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Left speed", leftSpeed);
     SmartDashboard.putNumber("Right speed", rightSpeed);
   }
-
+  // Toggles the drive mode.
   public void toggleDriveMode() {
     arcade = !arcade;
   }
-
+  // Sets the speed of the drive base.
   public void set(double left, double right) {
     leftMotor1.set(left);
     leftMotor2.set(left);

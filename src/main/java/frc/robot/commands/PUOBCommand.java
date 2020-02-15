@@ -28,6 +28,7 @@ public class PUOBCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // Toggles the PUOB on and off
     if (Robot.PUOBSubsystem.isMotorOn()) {
       Robot.PUOBSubsystem.motorOff();
     } else {

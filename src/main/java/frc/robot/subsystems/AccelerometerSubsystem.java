@@ -20,7 +20,7 @@ public class AccelerometerSubsystem extends SubsystemBase {
   public AccelerometerSubsystem() {
     accelerometer = new BuiltInAccelerometer();
   }
-
+  // Reads the accelerometer and outputs it to SmartDashboard.
   public void readAccelerometer() {
     double x = accelerometer.getX();
     double y = accelerometer.getY();

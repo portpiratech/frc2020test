@@ -41,6 +41,7 @@ public class TurretCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // At the start the shooter move down to reset the encoder
     if (init) {
       Robot.turretSubsystem.setYMotor(initSpeedY);
       if (Robot.turretSubsystem.getForwardLimitSwitchY() == 1) {
@@ -48,7 +49,9 @@ public class TurretCommand extends CommandBase {
         init = false;
       }
     } else {
+      // Is the robot can see the target it will turn to face it and will aim vertically, so the ball will make it into the goal.
       if (Robot.cameraSubsystem.hasTarget()) {
+        // X movement
         double turnSpeedX = Robot.cameraSubsystem.getXAngle() * gainX;
         if (turnSpeedX > maxSpeedX) {
           turnSpeedX = maxSpeedX;
@@ -63,10 +66,14 @@ public class TurretCommand extends CommandBase {
         } else {
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
+        // Y movement
         double targetYAngle;
         targetYAngle = Robot.cameraSubsystem.getTargetAngle();
         if(targetYAngle > Robot.cameraSubsystem.getMaxAngle()){
           targetYAngle = Robot.cameraSubsystem.getMaxAngle();
+        }
+        if(targetYAngle < Robot.cameraSubsystem.getMinAngle()){
+          targetYAngle = Robot.cameraSubsystem.getMinAngle();
         }
         SmartDashboard.putNumber("angle Y", Robot.turretSubsystem.getYAngle());
         SmartDashboard.putNumber("targetAngle", targetYAngle);
@@ -85,6 +92,7 @@ public class TurretCommand extends CommandBase {
           Robot.turretSubsystem.setYMotor(turnSpeedY);
         }
       } else{
+        // If there isn't a target the robot will search for it.
         Robot.turretSubsystem.setXMotor(defaultXSpeed);
       }
       if (defaultXSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0) {

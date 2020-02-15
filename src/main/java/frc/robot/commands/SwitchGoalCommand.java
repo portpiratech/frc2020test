@@ -21,6 +21,7 @@ public class SwitchGoalCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // switchs between high and low goal
     Robot.turretSubsystem.switchHighGoal();
   }
 

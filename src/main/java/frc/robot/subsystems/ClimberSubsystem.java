@@ -26,7 +26,7 @@ public class ClimberSubsystem extends SubsystemBase {
     // motor = new CANSparkMax(RobotMap.climbMotorID, MotorType.kBrushless);
     motor = new TalonSRX(RobotMap.climbMotorID);
   }
-
+  // Motor spins at the givin speed.
   public void turn(double speed) {
     motor.set(ControlMode.PercentOutput, speed);
     // motor.set(speed);

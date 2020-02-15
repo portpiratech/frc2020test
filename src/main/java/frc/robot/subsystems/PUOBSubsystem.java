@@ -20,24 +20,26 @@ public class PUOBSubsystem extends SubsystemBase {
   private TalonSRX motor;
   private double speed = 0.3;
   private boolean motorOn = false;
-
+// Picker Upper Of Balls
   public PUOBSubsystem() {
     motor = new TalonSRX(RobotMap.PUOBMotorID);
   }
-
+  // Turns the motor on.
   public void motorOn() {
     motor.set(ControlMode.PercentOutput, speed);
     motorOn = true;
   }
+  // Turns the motor off.
   public void motorOff() {
     motor.set(ControlMode.PercentOutput, 0);
     motorOn = false;
   }
+  // Runs the motor in reverse.
   public void motorReverse() {
     motor.set(ControlMode.PercentOutput, -speed);
     motorOn = true;
   }
-
+  // Returns if the motor is on.
   public boolean isMotorOn(){
     return motorOn;
   }

@@ -30,6 +30,7 @@ public class PistonCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // Extends and retracts piston for shifting gears
     if (extended) {
       Robot.solenoid.retractLauncher();
       // Timer.delay(0.5);
