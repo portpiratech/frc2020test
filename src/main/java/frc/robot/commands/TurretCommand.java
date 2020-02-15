@@ -71,6 +71,9 @@ public class TurretCommand extends CommandBase {
         } else {
           targetYAngle = 0;
         }
+        if(targetYAngle > Robot.cameraSubsystem.getMaxAngle()){
+          targetYAngle = Robot.cameraSubsystem.getMaxAngle();
+        }
         SmartDashboard.putNumber("angle Y", Robot.turretSubsystem.getYAngle());
         SmartDashboard.putNumber("targetAngle", targetYAngle);
         double turnSpeedY = (-Robot.turretSubsystem.getYAngle() - targetYAngle) * gainY;

@@ -35,6 +35,14 @@ public class CameraSubsystem extends SubsystemBase {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
 
+    public double getMinAngle(){
+        return minAngle;
+    }
+
+    public double getMaxAngle(){
+        return maxAngle;
+    }
+
     public void outputToSmartDashboard() {
         NetworkTableEntry tv = table.getEntry("tv");
         NetworkTableEntry tx = table.getEntry("tx");
