@@ -16,8 +16,6 @@ public class TurretCommand extends CommandBase {
   /**
    * Creates a new AimTurretCommand.
    */
-  private boolean lastPressed = false;
-  private boolean highGoal = true;
   private boolean init = true;
   private double initSpeedY = 0.2;
 
@@ -66,7 +64,7 @@ public class TurretCommand extends CommandBase {
           Robot.turretSubsystem.setXMotor(turnSpeedX);
         }
         double targetYAngle;
-        if (highGoal) {
+        if (Robot.turretSubsystem.isHighGoal()) {
           targetYAngle = Robot.cameraSubsystem.getTargetAngle2();
         } else {
           targetYAngle = 0;
@@ -109,10 +107,6 @@ public class TurretCommand extends CommandBase {
     if (OI.startButtonOperator.get()) {
       init = true;
     }
-    if (!lastPressed && OI.leftBumperOperator.get()) {
-      highGoal = !highGoal;
-    }
-    lastPressed = OI.leftBumperOperator.get();
   }
 
   // Called once the command ends or is interrupted.

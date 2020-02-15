@@ -15,6 +15,7 @@ import frc.robot.commands.PUOBCommand;
 import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ShooterMotorCommand;
 import frc.robot.commands.ShooterPistonCommand;
+import frc.robot.commands.SwitchGoalCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
 
 /**
@@ -98,5 +99,7 @@ public class OI {
 
     bButtonOperator.whenPressed(new PUOBCommand());
     backButtonOperator.whenPressed(new PUOBCommand());
+
+    leftBumperOperator.whenPressed(new SwitchGoalCommand());
   }
 }

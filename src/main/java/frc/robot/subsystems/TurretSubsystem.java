@@ -24,6 +24,7 @@ public class TurretSubsystem extends SubsystemBase {
   private double countsPerRev = 1988;
   private TalonSRX yMotor;
   private TalonSRX xMotor;
+  private boolean highGoal = true;
 
   public TurretSubsystem() {
     xMotor = new TalonSRX(RobotMap.turretXMotorID);
@@ -41,6 +42,14 @@ public class TurretSubsystem extends SubsystemBase {
         RobotMap.turretYMotorID, 10);
     yMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     // yMotor.getSensorCollection().setQuadraturePosition(0, 10);
+  }
+
+  public boolean isHighGoal(){
+    return highGoal;
+  }
+
+  public void switchHighGoal(){
+    highGoal = !highGoal;
   }
 
   public void setXMotor(double speed) {
