@@ -90,11 +90,11 @@ public class CameraSubsystem extends SubsystemBase {
         return distance;
     }
 
-    public double getTargetAngle() {
+    public double getTargetAngleTest() {
         return Math.atan((targetHeight - cameraHeight + 0.254) / (getDistance() + 0.6731));
     }
 
-    public double getTargetAngle2() {
+    public double getTargetAngle() {
         double d = getDistance();
         double v = RobotMap.velocity;
         double h = targetHeight - cameraHeight;
@@ -105,8 +105,8 @@ public class CameraSubsystem extends SubsystemBase {
     }
 
     public boolean shotViable() {
-        return hasTarget() && !Double.isNaN(getTargetAngle2()) && getTargetAngle2() >= minAngle
-                && getTargetAngle2() <= maxAngle && getYAngle() > getTargetAngle2() - angleRange
-                && getYAngle() < getTargetAngle2() + angleRange;
+        return hasTarget() && !Double.isNaN(getTargetAngle()) && getTargetAngle() >= minAngle
+                && getTargetAngle() <= maxAngle && getYAngle() > getTargetAngle() - angleRange
+                && getYAngle() < getTargetAngle() + angleRange;
     }
 }

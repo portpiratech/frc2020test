@@ -27,7 +27,7 @@ public class CameraCommand extends CommandBase {
   public void execute() {
     Robot.cameraSubsystem.outputToSmartDashboard();
     Robot.cameraSubsystem.getDistance();
-    Robot.cameraSubsystem.getTargetAngle2();
+    Robot.cameraSubsystem.getTargetAngle();
     /*
      * if(OI.driverController.getPOV() > -1){
      * OI.operatorController.setRumble(RumbleType.kLeftRumble, 1); }else{
