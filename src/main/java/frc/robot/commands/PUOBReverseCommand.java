@@ -8,41 +8,37 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.Robot;
 
-public class PUOBCommand extends CommandBase {
+public class PUOBReverseCommand extends CommandBase {
   /**
-   * Creates a new PUOBCommand.
+   * Creates a new PUOBReverseCommand.
    */
-
-  public PUOBCommand() {
-    addRequirements(Robot.PUOBSubsystem);
+  public PUOBReverseCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.PUOBSubsystem.motorReverse();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Robot.PUOBSubsystem.isMotorOn()) {
-      Robot.PUOBSubsystem.motorOff();
-    } else {
-      Robot.PUOBSubsystem.motorOn();
-    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Robot.PUOBSubsystem.motorOff();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return !OI.backButtonOperator.get();
   }
 }

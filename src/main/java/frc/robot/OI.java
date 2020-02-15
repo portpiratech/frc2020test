@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import frc.robot.commands.CameraModeCommand;
 import frc.robot.commands.ClimberCommand;
 import frc.robot.commands.PUOBCommand;
+import frc.robot.commands.PUOBReverseCommand;
 import frc.robot.commands.PistonCommand;
 import frc.robot.commands.ShooterMotorCommand;
 import frc.robot.commands.ShooterPistonCommand;
@@ -98,7 +99,7 @@ public class OI {
     yButtonOperator.whenPressed(new ShooterPistonCommand());
 
     bButtonOperator.whenPressed(new PUOBCommand());
-    backButtonOperator.whenPressed(new PUOBCommand());
+    backButtonOperator.whenPressed(new PUOBReverseCommand());
 
     leftBumperOperator.whenPressed(new SwitchGoalCommand());
   }

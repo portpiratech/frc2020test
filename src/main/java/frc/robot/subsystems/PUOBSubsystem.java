@@ -18,12 +18,28 @@ public class PUOBSubsystem extends SubsystemBase {
    * Creates a new PUOBSubsystem.
    */
   private TalonSRX motor;
+  private double speed = 0.3;
+  private boolean motorOn = false;
 
   public PUOBSubsystem() {
     motor = new TalonSRX(RobotMap.PUOBMotorID);
   }
 
-  public void turn(double speed) {
+  public void motorOn() {
     motor.set(ControlMode.PercentOutput, speed);
+    motorOn = true;
   }
+  public void motorOff() {
+    motor.set(ControlMode.PercentOutput, 0);
+    motorOn = false;
+  }
+  public void motorReverse() {
+    motor.set(ControlMode.PercentOutput, -speed);
+    motorOn = true;
+  }
+
+  public boolean isMotorOn(){
+    return motorOn;
+  }
+
 }
