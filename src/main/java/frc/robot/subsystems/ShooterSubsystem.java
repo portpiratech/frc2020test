@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
-// import com.ctre.phoenix.motorcontrol.ControlMode;
-// import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -24,50 +24,54 @@ public class ShooterSubsystem extends SubsystemBase {
    * Creates a new ShooterSubsystem.
    */
   private DoubleSolenoid piston;
-  // private TalonSRX motor;
   private CANSparkMax leftMotor;
+  private CANPIDController leftMotorPIDController;
+  private CANEncoder leftMotorEncoder;
   private CANSparkMax rightMotor;
+  private CANPIDController rightMotorPIDController;
+  private CANEncoder rightMotorEncoder;
   private boolean isMotorOn;
   private double speed = 0.3;
 
   public ShooterSubsystem() {
     piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
-    // motor = new TalonSRX(RobotMap.SPIFFYMotorID);
     leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
+    leftMotorPIDController = leftMotor.getPIDController();
+    leftMotorEncoder = leftMotor.getEncoder();
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
+    rightMotorPIDController = rightMotor.getPIDController();
+    rightMotorEncoder = rightMotor.getEncoder();
     isMotorOn = false;
   }
-  // Extends the piston.
+  
   public void extendLauncher() {
     piston.set(Value.kForward);
   }
-  // Retracts the piston.
+  
   public void retractLauncher() {
     piston.set(Value.kReverse);
   }
-  // Stops the piston.
+  
   public void stopLauncher() {
     piston.set(Value.kOff);
   }
-  // Turns the motor on.
+  
   public void startMotor() {
-    // motor.set(ControlMode.PercentOutput, speed);
     leftMotor.set(speed);
     rightMotor.set(-speed);
     isMotorOn = true;
   }
-  // Stops the motor.
+  
   public void stopMotor() {
-    // motor.set(ControlMode.PercentOutput, 0);
     leftMotor.set(0);
     rightMotor.set(0);
     isMotorOn = false;
   }
-  // Returns if the motor is on.
+  
   public boolean isMotorOn() {
     return isMotorOn;
   }
-  // Shoots the ball and returns if it succeeded.
+  
   public boolean shoot(){
     if (Robot.shooterSubsystem.isMotorOn()
       && Robot.cameraSubsystem.hasTarget()
