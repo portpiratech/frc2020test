@@ -85,17 +85,7 @@ public class ShooterSubsystem extends SubsystemBase {
     return isMotorOn;
   }
 
-  public void setPIDConstants(double kP, double kI, double kD, double kIz, double kFF, double rpm) {
-    leftMotorPIDController.setP(kP);
-    leftMotorPIDController.setI(kI);
-    leftMotorPIDController.setD(kD);
-    leftMotorPIDController.setIZone(kIz);
-    leftMotorPIDController.setFF(kFF);
-    rightMotorPIDController.setP(kP);
-    rightMotorPIDController.setI(kI);
-    rightMotorPIDController.setD(kD);
-    rightMotorPIDController.setIZone(kIz);
-    rightMotorPIDController.setFF(kFF);
+  public void setPIDConstants(double rpm) {
     leftMotorPIDController.setReference(rpm, ControlType.kVelocity);
     rightMotorPIDController.setReference(-rpm, ControlType.kVelocity);
   }
