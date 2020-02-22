@@ -35,19 +35,10 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public ShooterSubsystem() {
     piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
-    kI = 0;
-    kD = 0; 
-    kIz = 0; 
-    kFF = 0.000015; 
-    kMaxOutput = 1; 
-    kMinOutput = -1;
-    maxRPM = 5700;
     leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
     leftMotorPIDController = leftMotor.getPIDController();
-    leftMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
-    rightMotorPIDController = rightMotor.getPIDController();;
-    rightMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
+    rightMotorPIDController = rightMotor.getPIDController();
     // isMotorOn = false;
     stopMotor();
   }
