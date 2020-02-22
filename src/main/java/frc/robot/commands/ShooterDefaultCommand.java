@@ -22,6 +22,12 @@ public class ShooterDefaultCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    SmartDashboard.putNumber("kP", 0);
+    SmartDashboard.putNumber("kI", 0);
+    SmartDashboard.putNumber("kD", 0);
+    SmartDashboard.putNumber("kIz", 0);
+    SmartDashboard.putNumber("kFF", 0);
+    SmartDashboard.putNumber("rpm", 0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
