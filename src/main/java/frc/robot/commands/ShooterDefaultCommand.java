@@ -22,24 +22,14 @@ public class ShooterDefaultCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    SmartDashboard.putNumber("kP", 0);
-    SmartDashboard.putNumber("kI", 0);
-    SmartDashboard.putNumber("kD", 0);
-    SmartDashboard.putNumber("kIz", 0);
-    SmartDashboard.putNumber("kFF", 0);
     SmartDashboard.putNumber("rpm", 0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double kP = SmartDashboard.getNumber("kP", 0);
-    double kI = SmartDashboard.getNumber("kI", 0);
-    double kD = SmartDashboard.getNumber("kD", 0);
-    double kIz = SmartDashboard.getNumber("kIz", 0);
-    double kFF = SmartDashboard.getNumber("kFF", 0);
     double rpm = SmartDashboard.getNumber("rpm", 0);
-    Robot.shooterSubsystem.setPIDConstants(kP, kI, kD, kIz, kFF, rpm);
+    Robot.shooterSubsystem.setRPM(rpm);
     Robot.shooterSubsystem.getMotorRPM();
   }
 
