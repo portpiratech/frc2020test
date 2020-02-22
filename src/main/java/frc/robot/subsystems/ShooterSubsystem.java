@@ -7,10 +7,10 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANPIDController;
+// import com.revrobotics.CANEncoder;
+// import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.ControlType;
+// import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -26,43 +26,43 @@ public class ShooterSubsystem extends SubsystemBase {
    */
   private DoubleSolenoid piston;
   private CANSparkMax leftMotor;
-  private CANPIDController leftMotorPIDController;
-  private CANEncoder leftMotorEncoder;
+  // private CANPIDController leftMotorPIDController;
+  // private CANEncoder leftMotorEncoder;
   private CANSparkMax rightMotor;
-  private CANPIDController rightMotorPIDController;
-  private CANEncoder rightMotorEncoder;
+  // private CANPIDController rightMotorPIDController;
+  // private CANEncoder rightMotorEncoder;
   private boolean isMotorOn;
   private double speed = 0.3;
-  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
+  // public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
 
   public ShooterSubsystem() {
     piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
-    kP = 6e-5; 
-    kI = 0;
-    kD = 0; 
-    kIz = 0; 
-    kFF = 0.000015; 
-    kMaxOutput = 1; 
-    kMinOutput = -1;
-    maxRPM = 5700;
+    // kP = 6e-5; 
+    // kI = 0;
+    // kD = 0; 
+    // kIz = 0; 
+    // kFF = 0.000015; 
+    // kMaxOutput = 1; 
+    // kMinOutput = -1;
+    // maxRPM = 5700;
     leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
-    leftMotorPIDController = leftMotor.getPIDController();
-    leftMotorEncoder = leftMotor.getEncoder();
-    leftMotorPIDController.setP(kP);
-    leftMotorPIDController.setI(kI);
-    leftMotorPIDController.setD(kD);
-    leftMotorPIDController.setIZone(kIz);
-    leftMotorPIDController.setFF(kFF);
-    leftMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
+    // leftMotorPIDController = leftMotor.getPIDController();
+    // leftMotorEncoder = leftMotor.getEncoder();
+    // leftMotorPIDController.setP(kP);
+    // leftMotorPIDController.setI(kI);
+    // leftMotorPIDController.setD(kD);
+    // leftMotorPIDController.setIZone(kIz);
+    // leftMotorPIDController.setFF(kFF);
+    // leftMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
-    rightMotorPIDController = rightMotor.getPIDController();
-    rightMotorEncoder = rightMotor.getEncoder();
-    rightMotorPIDController.setP(kP);
-    rightMotorPIDController.setI(kI);
-    rightMotorPIDController.setD(kD);
-    rightMotorPIDController.setIZone(kIz);
-    rightMotorPIDController.setFF(kFF);
-    rightMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
+    // rightMotorPIDController = rightMotor.getPIDController();
+    // rightMotorEncoder = rightMotor.getEncoder();
+    // rightMotorPIDController.setP(kP);
+    // rightMotorPIDController.setI(kI);
+    // rightMotorPIDController.setD(kD);
+    // rightMotorPIDController.setIZone(kIz);
+    // rightMotorPIDController.setFF(kFF);
+    // rightMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
     isMotorOn = false;
   }
   
@@ -79,17 +79,19 @@ public class ShooterSubsystem extends SubsystemBase {
   }
   
   public void startMotor() {
-    double setPoint = 3000;
-    leftMotorPIDController.setReference(setPoint, ControlType.kVelocity);
-    rightMotorPIDController.setReference(-setPoint, ControlType.kVelocity);
-    // leftMotor.set(speed);
-    // rightMotor.set(-speed);
+    // double setPoint = 3000;
+    // leftMotorPIDController.setReference(setPoint, ControlType.kVelocity);
+    // rightMotorPIDController.setReference(-setPoint, ControlType.kVelocity);
+    leftMotor.set(speed);
+    rightMotor.set(-speed);
     isMotorOn = true;
   }
   
   public void stopMotor() {
-    leftMotorPIDController.setReference(0, ControlType.kVelocity);
-    rightMotorPIDController.setReference(0, ControlType.kVelocity);
+    // leftMotorPIDController.setReference(0, ControlType.kVelocity);
+    // rightMotorPIDController.setReference(0, ControlType.kVelocity);
+    leftMotor.set(0);
+    rightMotor.set(0);
     isMotorOn = false;
   }
   
