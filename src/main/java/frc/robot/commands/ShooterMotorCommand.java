@@ -28,9 +28,9 @@ public class ShooterMotorCommand extends CommandBase {
   public void execute() {
     // turns the motor for shooting balls on and off
     if (Robot.shooterSubsystem.isMotorOn()) {
-      Robot.shooterSubsystem.startMotor();
-    } else {
       Robot.shooterSubsystem.stopMotor();
+    } else {
+      Robot.shooterSubsystem.startMotor();
     }
   }
 

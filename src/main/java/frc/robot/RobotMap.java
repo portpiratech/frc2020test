@@ -48,6 +48,6 @@ public class RobotMap {
 
   public static int SPIFFYSolenoidPort1 = 2;
   public static int SPIFFYSolenoidPort2 = 1;
-  public static int SPIFFYLeftMotorID = 9;
-  public static int SPIFFYRightMotorID = 10;
+  public static int SPIFFYLeftMotorID = 10;
+  public static int SPIFFYRightMotorID = 9;
 }
