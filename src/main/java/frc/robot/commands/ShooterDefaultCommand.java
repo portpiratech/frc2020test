@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
@@ -26,6 +27,13 @@ public class ShooterDefaultCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    double kP = SmartDashboard.getNumber("kP", 0);
+    double kI = SmartDashboard.getNumber("kI", 0);
+    double kD = SmartDashboard.getNumber("kD", 0);
+    double kIz = SmartDashboard.getNumber("kIz", 0);
+    double kFF = SmartDashboard.getNumber("kFF", 0);
+    double rpm = SmartDashboard.getNumber("rpm", 0);
+    Robot.shooterSubsystem.setPIDConstants(kP, kI, kD, kIz, kFF, rpm);
     Robot.shooterSubsystem.getMotorRPM();
   }
 

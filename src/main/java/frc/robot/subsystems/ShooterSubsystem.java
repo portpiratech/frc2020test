@@ -35,7 +35,6 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public ShooterSubsystem() {
     piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
-    kP = 6e-5; 
     kI = 0;
     kD = 0; 
     kIz = 0; 
@@ -45,19 +44,9 @@ public class ShooterSubsystem extends SubsystemBase {
     maxRPM = 5700;
     leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
     leftMotorPIDController = leftMotor.getPIDController();
-    leftMotorPIDController.setP(kP);
-    leftMotorPIDController.setI(kI);
-    leftMotorPIDController.setD(kD);
-    leftMotorPIDController.setIZone(kIz);
-    leftMotorPIDController.setFF(kFF);
     leftMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
-    rightMotorPIDController = rightMotor.getPIDController();
-    rightMotorPIDController.setP(kP);
-    rightMotorPIDController.setI(kI);
-    rightMotorPIDController.setD(kD);
-    rightMotorPIDController.setIZone(kIz);
-    rightMotorPIDController.setFF(kFF);
+    rightMotorPIDController = rightMotor.getPIDController();;
     rightMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
     // isMotorOn = false;
     stopMotor();
@@ -94,6 +83,21 @@ public class ShooterSubsystem extends SubsystemBase {
   
   public boolean isMotorOn() {
     return isMotorOn;
+  }
+
+  public void setPIDConstants(double kP, double kI, double kD, double kIz, double kFF, double rpm) {
+    leftMotorPIDController.setP(kP);
+    leftMotorPIDController.setI(kI);
+    leftMotorPIDController.setD(kD);
+    leftMotorPIDController.setIZone(kIz);
+    leftMotorPIDController.setFF(kFF);
+    rightMotorPIDController.setP(kP);
+    rightMotorPIDController.setI(kI);
+    rightMotorPIDController.setD(kD);
+    rightMotorPIDController.setIZone(kIz);
+    rightMotorPIDController.setFF(kFF);
+    leftMotorPIDController.setReference(rpm, ControlType.kVelocity);
+    rightMotorPIDController.setReference(-rpm, ControlType.kVelocity);
   }
 
   public void getMotorRPM() {
