@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
@@ -28,12 +27,10 @@ public class ShooterSubsystem extends SubsystemBase {
   private DoubleSolenoid piston;
   private CANSparkMax leftMotor;
   private CANPIDController leftMotorPIDController;
-  private CANEncoder leftMotorEncoder;
   private CANSparkMax rightMotor;
   private CANPIDController rightMotorPIDController;
-  private CANEncoder rightMotorEncoder;
   private boolean isMotorOn;
-  private double speed = 1;
+  // private double speed = 1;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
 
   public ShooterSubsystem() {
@@ -48,7 +45,6 @@ public class ShooterSubsystem extends SubsystemBase {
     maxRPM = 5700;
     leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
     leftMotorPIDController = leftMotor.getPIDController();
-    leftMotorEncoder = leftMotor.getEncoder();
     leftMotorPIDController.setP(kP);
     leftMotorPIDController.setI(kI);
     leftMotorPIDController.setD(kD);
@@ -57,14 +53,13 @@ public class ShooterSubsystem extends SubsystemBase {
     leftMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
     rightMotorPIDController = rightMotor.getPIDController();
-    rightMotorEncoder = rightMotor.getEncoder();
     rightMotorPIDController.setP(kP);
     rightMotorPIDController.setI(kI);
     rightMotorPIDController.setD(kD);
     rightMotorPIDController.setIZone(kIz);
     rightMotorPIDController.setFF(kFF);
     rightMotorPIDController.setOutputRange(kMinOutput, kMaxOutput);
-    isMotorOn = false;
+    // isMotorOn = false;
     stopMotor();
   }
   
