@@ -16,6 +16,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -98,6 +99,11 @@ public class ShooterSubsystem extends SubsystemBase {
   
   public boolean isMotorOn() {
     return isMotorOn;
+  }
+
+  public void getMotorRPM() {
+    SmartDashboard.putNumber("Left RPM", leftMotor.getEncoder().getVelocity());
+    SmartDashboard.putNumber("Right PRM", rightMotor.getEncoder().getVelocity());
   }
   
   public boolean shoot(){
