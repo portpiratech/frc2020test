@@ -65,7 +65,7 @@ public class ShooterSubsystem extends SubsystemBase {
   }
   
   public void startMotor() {
-    double setPoint = 3000;
+    double setPoint = 0;
     leftMotorPIDController.setReference(setPoint, ControlType.kVelocity);
     rightMotorPIDController.setReference(-setPoint, ControlType.kVelocity);
     // leftMotor.set(-speed);
