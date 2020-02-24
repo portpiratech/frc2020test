@@ -44,7 +44,7 @@ public class RobotMap {
 
   public static int PUOBMotorID = 9;
 
-  public static int climbMotorID = 34;
+  public static int climbMotorID = 11;
 
   public static int SPIFFYSolenoidPort1 = 2;
   public static int SPIFFYSolenoidPort2 = 1;

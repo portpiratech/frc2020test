@@ -16,7 +16,7 @@ public class ClimberCommand extends CommandBase {
    * Creates a new ClimberCommand.
    */
   private boolean up = true;
-  private double speed = 0.5;
+  private double speed = 1;
 
   public ClimberCommand() {
     addRequirements(Robot.climberSubsystem);
