@@ -39,7 +39,7 @@ public class RobotMap {
   public static int shifterSolenoidPort2 = 4; // DoubleSolenoid
 
   public static int turretXMotorID = 10;
-  public static int turretYMotorID = 11;
+  public static int turretYMotorID = 101;
   public static double velocity = 13.4;
 
   public static int PUOBMotorID = 9;

@@ -92,7 +92,7 @@ public class OI {
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
-    // xButtonOperator.whenPressed(new ClimberCommand());
+    xButtonOperator.whenPressed(new ClimberCommand());
     aButtonOperator.whenPressed(new ShooterMotorCommand());
     yButtonOperator.whenPressed(new ShooterPistonCommand());
 
