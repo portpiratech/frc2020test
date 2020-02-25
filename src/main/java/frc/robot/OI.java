@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ClimberCommand;
+import frc.robot.commands.ClimberReverseCommand;
 import frc.robot.commands.PUOBCommand;
 import frc.robot.commands.PUOBReverseCommand;
 import frc.robot.commands.PistonCommand;
@@ -92,7 +93,8 @@ public class OI {
     backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
-    xButtonOperator.whenPressed(new ClimberCommand());
+    aButtonDriver.whenPressed(new ClimberCommand());
+    bButtonDriver.whenPressed(new ClimberReverseCommand());
     aButtonOperator.whenPressed(new ShooterMotorCommand());
     yButtonOperator.whenPressed(new ShooterPistonCommand());
 

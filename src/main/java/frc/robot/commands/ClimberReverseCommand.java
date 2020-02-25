@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI;
 import frc.robot.Robot;
 
-public class ClimberCommand extends CommandBase {
+public class ClimberReverseCommand extends CommandBase {
   /**
-   * Creates a new ClimberCommand.
+   * Creates a new ClimberReverseCommand.
    */
-  private double speed = 1;
 
-  public ClimberCommand() {
-    addRequirements(Robot.climberSubsystem);
+  private double speed = -1;
+
+  public ClimberReverseCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -42,6 +42,6 @@ public class ClimberCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !OI.aButtonDriver.get();
+    return !OI.bButtonDriver.get();
   }
 }
