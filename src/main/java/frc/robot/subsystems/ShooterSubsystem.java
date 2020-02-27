@@ -77,8 +77,8 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public void setRPM(double rpm) {
-    leftMotorPIDController.setReference(rpm, ControlType.kVelocity);
-    rightMotorPIDController.setReference(-rpm, ControlType.kVelocity);
+    leftMotorPIDController.setReference(-rpm, ControlType.kVelocity);
+    rightMotorPIDController.setReference(rpm, ControlType.kVelocity);
   }
 
   public void getMotorRPM() {
