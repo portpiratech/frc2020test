@@ -12,12 +12,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  */
 public class SolenoidSubsystem extends SubsystemBase {
 
-	private DoubleSolenoid cannonSolenoid;
+	private DoubleSolenoid leftSolenoid;
+	private DoubleSolenoid rightSolenoid;
 
 	public SolenoidSubsystem() {
 		super();
-		cannonSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1,
-				RobotMap.shifterSolenoidPort2);
+		leftSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1Left,
+				RobotMap.shifterSolenoidPort2Left);
+		rightSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1Right,
+				RobotMap.shifterSolenoidPort2Right);
 	}
 
 	/*
@@ -33,15 +36,18 @@ public class SolenoidSubsystem extends SubsystemBase {
 	// Cannon solenoid (Launcher)
 	// Extends the piston.
 	public void extendLauncher() {
-		cannonSolenoid.set(Value.kForward);
+		leftSolenoid.set(Value.kForward);
+		rightSolenoid.set(Value.kForward);
 	}
 	// Retracts the piston.
 	public void retractLauncher() {
-		cannonSolenoid.set(Value.kReverse);
+		leftSolenoid.set(Value.kReverse);
+		rightSolenoid.set(Value.kReverse);
 	}
 	// Stops the piston.
 	public void stopLauncher() {
-		cannonSolenoid.set(Value.kOff);
+		leftSolenoid.set(Value.kOff);
+		rightSolenoid.set(Value.kOff);
 	}
 
 	/*
