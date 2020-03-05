@@ -42,14 +42,15 @@ public class RobotMap {
 
   public static int turretXMotorID = 10;
   public static int turretYMotorID = 101;
-  public static double velocity = 13.4;
 
   public static int PUOBMotorID = 9;
 
   public static int climbMotorID = 11;
 
-  public static int SPIFFYSolenoidPort1 = 2;
-  public static int SPIFFYSolenoidPort2 = 1;
+  public static int SPIFFYSolenoidPort1 = 5;
+  public static int SPIFFYSolenoidPort2 = 6;
   public static int SPIFFYLeftMotorID = 1;
   public static int SPIFFYRightMotorID = 2;
+  public static double rpm = 4000;
+  public static double velocity = 0.0033 * rpm - 3.3426;
 }

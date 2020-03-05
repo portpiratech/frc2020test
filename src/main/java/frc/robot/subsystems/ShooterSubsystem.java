@@ -30,7 +30,6 @@ public class ShooterSubsystem extends SubsystemBase {
   private CANSparkMax rightMotor;
   private CANPIDController rightMotorPIDController;
   private boolean isMotorOn;
-  // private double speed = 1;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
 
   public ShooterSubsystem() {
@@ -56,9 +55,8 @@ public class ShooterSubsystem extends SubsystemBase {
   }
   
   public void startMotor() {
-    double setPoint = 0;
-    leftMotorPIDController.setReference(setPoint, ControlType.kVelocity);
-    rightMotorPIDController.setReference(-setPoint, ControlType.kVelocity);
+    leftMotorPIDController.setReference(RobotMap.rpm, ControlType.kVelocity);
+    rightMotorPIDController.setReference(-RobotMap.rpm, ControlType.kVelocity);
     // leftMotor.set(-speed);
     // rightMotor.set(speed);
     isMotorOn = true;
