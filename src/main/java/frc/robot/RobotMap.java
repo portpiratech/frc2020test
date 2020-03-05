@@ -28,8 +28,8 @@ public class RobotMap {
   public static double driveSpeedMultiplier = 0.6;
   public static double deadband = 0.05;
   public static int leftSparkMaxID1 = 3;
-  public static int rightSparkMaxID1 = 5;
   public static int leftSparkMaxID2 = 4;
+  public static int rightSparkMaxID1 = 5;
   public static int rightSparkMaxID2 = 6;
   public static int leftMotorID = 33;// 9;
   public static int rightMotorID = 4798367;// 12;
