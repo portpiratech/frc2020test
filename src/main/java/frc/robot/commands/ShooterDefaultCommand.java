@@ -15,6 +15,7 @@ public class ShooterDefaultCommand extends CommandBase {
   /**
    * Creates a new ShooterDefaultCommand.
    */
+  
   public ShooterDefaultCommand() {
     addRequirements(Robot.shooterSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
