@@ -12,61 +12,38 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ShooterSubsystem extends SubsystemBase {
   /**
    * Creates a new ShooterSubsystem.
    */
-  private DoubleSolenoid piston;
+  // private DoubleSolenoid piston;
   private CANSparkMax leftMotor;
   private CANPIDController leftMotorPIDController;
   private CANSparkMax rightMotor;
   private CANPIDController rightMotorPIDController;
   private boolean isMotorOn;
-  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
 
   public ShooterSubsystem() {
-    piston = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.SPIFFYSolenoidPort1, RobotMap.SPIFFYSolenoidPort2);
     leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
     leftMotorPIDController = leftMotor.getPIDController();
     rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
     rightMotorPIDController = rightMotor.getPIDController();
-    // isMotorOn = false;
     stopMotor();
-  }
-  
-  public void extendLauncher() {
-    piston.set(Value.kForward);
-  }
-  
-  public void retractLauncher() {
-    piston.set(Value.kReverse);
-  }
-  
-  public void stopLauncher() {
-    piston.set(Value.kOff);
   }
   
   public void startMotor() {
     leftMotorPIDController.setReference(RobotMap.rpm, ControlType.kVelocity);
     rightMotorPIDController.setReference(-RobotMap.rpm, ControlType.kVelocity);
-    // leftMotor.set(-speed);
-    // rightMotor.set(speed);
     isMotorOn = true;
   }
   
   public void stopMotor() {
     leftMotorPIDController.setReference(0, ControlType.kVelocity);
     rightMotorPIDController.setReference(0, ControlType.kVelocity);
-    // leftMotor.set(0);
-    // rightMotor.set(0);
     isMotorOn = false;
   }
   
@@ -84,17 +61,17 @@ public class ShooterSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Right PRM", rightMotor.getEncoder().getVelocity());
   }
   
-  public boolean shoot(){
-    if (Robot.shooterSubsystem.isMotorOn()
-      && Robot.cameraSubsystem.hasTarget()
-      && Robot.cameraSubsystem.shotViable()
-    ) {
-      Robot.shooterSubsystem.retractLauncher();
-      Timer.delay(1);
-      Robot.shooterSubsystem.extendLauncher();
-      return true;
-    }else{
-      return false;
-    }
-  }
+  // public boolean shoot(){
+  //   if (Robot.shooterSubsystem.isMotorOn()
+  //     && Robot.cameraSubsystem.hasTarget()
+  //     && Robot.cameraSubsystem.shotViable()
+  //   ) {
+  //     Robot.shooterSubsystem.retractLauncher();
+  //     Timer.delay(1);
+  //     Robot.shooterSubsystem.extendLauncher();
+  //     return true;
+  //   }else{
+  //     return false;
+  //   }
+  // }
 }

@@ -151,7 +151,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     CommandScheduler.getInstance().run();
-    if ((System.currentTimeMillis() - timeLastShot) > shootingTimeInterval && Robot.shooterSubsystem.shoot()) {
+    if ((System.currentTimeMillis() - timeLastShot) > shootingTimeInterval) {
       timeLastShot = System.currentTimeMillis();
     }
   }

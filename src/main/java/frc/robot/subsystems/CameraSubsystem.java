@@ -15,8 +15,8 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
+// import frc.robot.Robot;
+// import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
@@ -24,7 +24,7 @@ import frc.robot.RobotMap;
 
 public class CameraSubsystem extends SubsystemBase {
 
-    private double angleRange = 0.5;
+    // private double angleRange = 0.5;
     private double minAngle = 0;
     private double maxAngle = Math.PI / 2;
     NetworkTable table;
@@ -91,28 +91,28 @@ public class CameraSubsystem extends SubsystemBase {
         return distance;
     }
     // Test to point the shooter directly at the target.
-    public double getTargetAngleTest() {
-        return Math.atan((targetHeight - cameraHeight + 0.254) / (getDistance() + 0.6731));
-    }
+    // public double getTargetAngleTest() {
+    //     return Math.atan((targetHeight - cameraHeight + 0.254) / (getDistance() + 0.6731));
+    // }
     // Returns the target angle based on distance equations.
-    public double getTargetAngle() {
-        double d = getDistance();
-        double v = RobotMap.velocity;
-        double h = targetHeight - cameraHeight;
-        double w = (-9.8 * Math.pow(d, 2)) / Math.pow(v, 2);
-        double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2))) / w);
-        SmartDashboard.putNumber("Target angle", ans);
-        if(Robot.turretSubsystem.isHighGoal()){
-            return ans;
-        }else{
-            return 0;
-        }
+    // public double getTargetAngle() {
+    //     double d = getDistance();
+    //     double v = RobotMap.velocity;
+    //     double h = targetHeight - cameraHeight;
+    //     double w = (-9.8 * Math.pow(d, 2)) / Math.pow(v, 2);
+    //     double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2))) / w);
+    //     SmartDashboard.putNumber("Target angle", ans);
+    //     if(Robot.turretSubsystem.isHighGoal()){
+    //         return ans;
+    //     }else{
+    //         return 0;
+    //     }
         
-    }
+    // }
     // Returns whether or not the shot is viable.
-    public boolean shotViable() {
-        return hasTarget() && !Double.isNaN(getTargetAngle()) && getTargetAngle() >= minAngle
-                && getTargetAngle() <= maxAngle && getYAngle() > getTargetAngle() - angleRange
-                && getYAngle() < getTargetAngle() + angleRange;
-    }
+    // public boolean shotViable() {
+    //     return hasTarget() && !Double.isNaN(getTargetAngle()) && getTargetAngle() >= minAngle
+    //             && getTargetAngle() <= maxAngle && getYAngle() > getTargetAngle() - angleRange
+    //             && getYAngle() < getTargetAngle() + angleRange;
+    // }
 }

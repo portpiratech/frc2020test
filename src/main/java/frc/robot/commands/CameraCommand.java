@@ -30,7 +30,7 @@ public class CameraCommand extends CommandBase {
     // outputs distance calculation
     Robot.cameraSubsystem.getDistance();
     // outputs angle calculation
-    Robot.cameraSubsystem.getTargetAngle();
+    // Robot.cameraSubsystem.getTargetAngle();
     // played with making the controller rumble
     /*
      * if(OI.driverController.getPOV() > -1){

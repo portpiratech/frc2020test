@@ -10,11 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class ShooterMotorCommand extends CommandBase {
+public class ShootCommand extends CommandBase {
   /**
    * Creates a new ShooterMotorCommand.
    */
-  public ShooterMotorCommand() {
+  public ShootCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

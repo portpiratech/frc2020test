@@ -14,9 +14,7 @@ import frc.robot.commands.ClimberReverseCommand;
 import frc.robot.commands.PUOBCommand;
 import frc.robot.commands.PUOBReverseCommand;
 import frc.robot.commands.PistonCommand;
-import frc.robot.commands.ShooterMotorCommand;
-import frc.robot.commands.ShooterPistonCommand;
-import frc.robot.commands.SwitchGoalCommand;
+import frc.robot.commands.ShootCommand;
 import frc.robot.commands.ToggleDriveModeCommand;
 
 /**
@@ -95,12 +93,9 @@ public class OI {
 
     aButtonDriver.whenPressed(new ClimberCommand());
     bButtonDriver.whenPressed(new ClimberReverseCommand());
-    aButtonOperator.whenPressed(new ShooterMotorCommand());
-    yButtonOperator.whenPressed(new ShooterPistonCommand());
+    aButtonOperator.whenPressed(new ShootCommand());
 
     bButtonOperator.whenPressed(new PUOBCommand());
     backButtonOperator.whenPressed(new PUOBReverseCommand());
-
-    leftBumperOperator.whenPressed(new SwitchGoalCommand());
   }
 }
