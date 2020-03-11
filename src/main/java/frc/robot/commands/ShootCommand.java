@@ -26,6 +26,10 @@ public class ShootCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    double h = 2.5;
+    double d = Robot.cameraSubsystem.getDistance();
+    double a = Math.PI/4;
+    double v = (d / Math.cos(a)) * Math.sqrt(4.9 / ((d * Math.tan(a)) - h));
     // turns the motor for shooting balls on and off
     if (Robot.shooterSubsystem.isMotorOn()) {
       Robot.shooterSubsystem.stopMotor();
